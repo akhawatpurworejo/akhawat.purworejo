@@ -1,0 +1,137 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AKHAWAT</title>
+<link id="gf" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--dk);line-height:1.65}
+h1,h2,h3{font-family:var(--hf);margin:.2em 0}a{color:inherit}
+header{position:sticky;top:0;background:var(--bg);z-index:5;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #0001}
+header img,.logo{height:36px}.logo{font:700 20px var(--hf);letter-spacing:2px}
+nav{display:flex;gap:14px;overflow-x:auto;flex:1;white-space:nowrap;font-size:14px}nav a{text-decoration:none;cursor:pointer;opacity:.8}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:999px;padding:10px 20px;font:600 14px inherit;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.o{background:none;color:var(--dk);border:1px solid var(--ac)}.btn.s{padding:6px 12px;font-size:12px}.btn.r{background:#a33}
+section,.wrap{max-width:1000px;margin:auto;padding:44px 18px}
+.hero{text-align:center;padding-top:60px}.hero h1{font-size:clamp(30px,8vw,52px);letter-spacing:3px}
+.art{display:block;margin:8px auto;height:190px;width:auto}.hero .art{height:300px}.hero img{max-width:260px;width:70%;border-radius:20px;margin:16px 0}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border-radius:18px;padding:20px;box-shadow:0 2px 12px #0001}
+.ic{font-size:34px}.card img{width:100%;max-height:150px;object-fit:cover;border-radius:12px}
+.st{color:#c8963e;letter-spacing:2px}small{opacity:.7;display:block}ul{padding-left:18px;margin:6px 0}
+form label,.adm label{display:block;margin:12px 0;font-weight:600;font-size:14px}
+input,textarea,select{width:100%;padding:10px;border:1px solid #0003;border-radius:10px;background:#fff;font:inherit;margin-top:4px}
+input[type=color]{height:42px;padding:2px}input[type=radio]{width:auto}
+#rt span{font-size:34px;cursor:pointer;color:#0003}#rt span.on{color:#c8963e}.hp{position:absolute;left:-9999px}
+.err{color:#a33;font-size:14px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-size:12px;padding:2px 8px;border-radius:9px;background:#0002}footer{text-align:center;padding:30px;opacity:.7}
+</style></head><body><div id="app"></div>
+<script>
+// ====== ISI 2 BARIS INI (lihat PANDUAN.md) ======
+const SB_URL='https://devtjgsanfuehpyhaabi.supabase.co',SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRldnRqZ3NhbmZ1ZWhweWhhYWJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4MzAzMjMsImV4cCI6MjExMDQwNjMyM30.gBZ6niRTLrwLin5xsav3XOf1bgGbs9aeTE9YOfpCyeY';
+// ================================================
+const SV=['Akhawat Ride','Akhawat Assist','Akhawat Care','Akhawat Gift','Akhawat Store'];
+const D={brand:'AKHAWAT',tagline:'Layanan Khusus Wanita untuk Membantu Setiap Kebutuhan',
+hero_desc:'Akhawat hadir untuk memberikan kemudahan, bantuan, dan pelayanan yang nyaman bagi muslimah dalam berbagai aktivitas dan kebutuhan sehari-hari.',
+about:{what:'Akhawat adalah layanan khusus wanita untuk membantu setiap kebutuhan.',why:'Akhawat hadir untuk memberikan kemudahan, bantuan, dan pelayanan yang nyaman bagi muslimah.',diff:'(Contoh, silakan ubah di dashboard) Layanan dikhususkan untuk wanita dengan pelayanan yang hangat dan nyaman.',who:'(Contoh, silakan ubah di dashboard) Setiap wanita yang membutuhkan bantuan.'},
+vision:'(Contoh) Menjadi layanan muslimah yang bermanfaat dan terpercaya.',
+missions:['(Contoh) Memberikan pelayanan yang amanah.','Membantu kebutuhan wanita.','Membangun lingkungan pelayanan yang nyaman.'],
+wa:'',ig:'',address:'Purworejo',logo:'',hero_img:'',
+colors:{bg:'#f7f0e6',card:'#fffaf3',accent:'#8b6a4f',dark:'#3e2c22'},fonts:{head:'Playfair Display',body:'Nunito'},
+services:[
+{name:'Akhawat Ride',icon:'🚗',img:'',short:'Antar jemput khusus wanita.',detail:'Layanan antar jemput khusus wanita dan kebutuhan transportasi sesuai ketentuan Akhawat.',examples:['Antar jemput khusus wanita','Kebutuhan transportasi sesuai ketentuan']},
+{name:'Akhawat Assist',icon:'🤝',img:'',short:'Bantuan untuk berbagai keperluan.',detail:'Layanan bantuan untuk membantu berbagai aktivitas dan keperluan pelanggan.',examples:['Titip belanja','Mengambil barang','Bantuan lainnya']},
+{name:'Akhawat Care',icon:'🤍',img:'',short:'Perhatian untuk orang terdekat.',detail:'Layanan perhatian dan bantuan untuk menunjukkan kepedulian kepada orang-orang terdekat melalui berbagai bentuk bantuan.',examples:['(Isi contoh layanan di dashboard)']},
+{name:'Akhawat Gift',icon:'🎁',img:'',short:'Hadiah dan kejutan untuk orang tersayang.',detail:'Layanan membantu mencari, menyiapkan, dan mengirimkan hadiah. Bisa juga membantu mengatur kejutan untuk orang tersayang.',examples:['Mencari hadiah','Menyiapkan hadiah','Mengirimkan hadiah','Mengatur kejutan']},
+{name:'Akhawat Store',icon:'🛍️',img:'',short:'Perlengkapan muslimah dan hadiah.',detail:'Toko yang menyediakan berbagai perlengkapan muslimah, kebutuhan sehari-hari, serta pilihan hadiah.',examples:['Perlengkapan muslimah','Kebutuhan sehari-hari','Pilihan hadiah']}]};
+const $=s=>document.querySelector(s),esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const get=(o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
+const set=(o,p,v)=>{const k=p.split('.'),l=k.pop();k.reduce((a,x)=>a[x]??={},o)[l]=v};
+const sb=supabase.createClient(SB_URL,SB_KEY);
+let S=structuredClone(D),T=[],user=null,tab='teks',showAll=false,done=false,t0=Date.now();
+const route=()=>location.hash.startsWith('#/admin')?'admin':location.hash.startsWith('#/testimoni')?'form':'home';
+const kind=n=>(n||'').toLowerCase().match(/ride|assist|care|gift|store/)?.[0]||'hero';
+function art(k){const a='#a98467',o='#3e2c22',skin='#f1d2b8',
+ P={ride:[[46,200],[172,95]],assist:[[46,200],[154,200]],care:[[90,186],[110,186]],gift:[[84,188],[116,188]],store:[[46,200],[154,200]],hero:[[46,200],[172,95]]}[k],
+ arm=(x,p)=>`<line x1="${x}" y1="142" x2="${p[0]}" y2="${p[1]}" stroke="${a}" stroke-width="20" stroke-linecap="round"/><circle cx="${p[0]}" cy="${p[1]}" r="8" fill="${skin}"/>`,
+ pr={ride:`<path d="M68 70a32 30 0 0 1 64 0z" fill="${a}" stroke="${o}" stroke-width="2"/><path d="M73 66a27 21 0 0 1 54 0z" fill="#e8d9c5" opacity=".6"/>`,
+ assist:`<path d="M34 198q12-24 24 0" fill="none" stroke="${o}" stroke-width="3"/><rect x="26" y="198" width="40" height="42" rx="5" fill="#c9a27e"/>`,
+ store:`<path d="M142 198q12-24 24 0" fill="none" stroke="${o}" stroke-width="3"/><rect x="134" y="198" width="40" height="42" rx="5" fill="#f3e9dc" stroke="${a}" stroke-width="2"/>`,
+ care:`<path d="M100 200c-24-14-24-32-10-32 6 0 10 4 10 8 0-4 4-8 10-8 14 0 14 18-10 32z" fill="#d9a5a0"/>`,
+ gift:`<rect x="76" y="182" width="48" height="38" rx="3" fill="#e8d9c5" stroke="${a}" stroke-width="2"/><rect x="97" y="182" width="6" height="38" fill="#c8963e"/><path d="M100 182c-14-14-24 0-8 0zM100 182c14-14 24 0 8 0z" fill="#c8963e"/>`,hero:''}[k];
+ return `<svg class="art" viewBox="0 0 200 300" role="img" aria-label="Ilustrasi ${k}"><ellipse cx="100" cy="292" rx="60" ry="6" fill="#0001"/><path d="M100 40C65 42 52 85 48 140L30 285h140l-18-145C148 85 135 42 100 40z" fill="#6b4630" stroke="${o}" stroke-width="2"/><ellipse cx="100" cy="80" rx="20" ry="26" fill="#4a3022"/>${arm(52,P[0])}${arm(148,P[1])}${pr}<ellipse cx="78" cy="290" rx="16" ry="7" fill="${o}"/><ellipse cx="122" cy="290" rx="16" ry="7" fill="${o}"/></svg>`}
+const wa=m=>`https://wa.me/${(S.wa||'').replace(/\D/g,'')}?text=${encodeURIComponent(m)}`;
+const stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+const pub=()=>T.filter(t=>t.status==='approved'&&t.consent);
+async function load(){
+ try{const {data}=await sb.from('settings').select('value').eq('key','site').maybeSingle();
+  if(data){const v=data.value;S={...D,...v,about:{...D.about,...v.about},colors:{...D.colors,...v.colors},fonts:{...D.fonts,...v.fonts}}}
+  const r=await sb.from('testimonials').select('*').order('created_at',{ascending:false});T=r.data||[]}catch(e){console.error(e)}}
+function theme(){const c=S.colors,f=S.fonts;
+ document.documentElement.style.cssText=`--bg:${c.bg};--card:${c.card};--ac:${c.accent};--dk:${c.dark};--hf:'${f.head}',serif`;
+ $('#gf').href='https://fonts.googleapis.com/css2?'+[...new Set([f.head,f.body])].map(x=>'family='+x.replace(/ /g,'+')+':wght@400;600;700').join('&')+'&display=swap';
+ document.body.style.fontFamily=`'${f.body}',sans-serif`;document.title=S.brand}
+const logo=()=>S.logo?`<img src="${esc(S.logo)}" alt="${esc(S.brand)}">`:`<span class="logo">${esc(S.brand)}</span>`;
+window.go=id=>{if(route()!=='home'){location.hash='#/';setTimeout(()=>go(id),80);return}document.getElementById(id)?.scrollIntoView({behavior:'smooth'})};
+const tcard=t=>`<div class="card"><div class="st">${stars(t.rating)}</div><p>“${esc(t.story)}”</p><b>${esc(t.display_name||t.name)}</b><small>${esc(t.service)}${t.product?' · '+esc(t.product):''}</small></div>`;
+function head(){return `<header><a href="#/">${logo()}</a><nav>${[['top','Beranda'],['about','Tentang Akhawat'],['visi','Visi & Misi'],['layanan','Layanan'],['testi','Testimoni'],['kontak','Kontak']].map(([i,l])=>`<a onclick="go('${i}')">${l}</a>`).join('')}</nav><a class="btn s" href="${wa('Assalamualaikum, saya ingin bertanya tentang layanan Akhawat')}" target="_blank">WhatsApp</a></header>`}
+function home(){
+ const sv=S.services.filter(s=>!s.hidden),P=pub();let l=P.filter(t=>t.featured);l=showAll?P:l.length?l:P.slice(0,6);
+ return head()+`<section class="hero" id="top">${logo().replace('class="logo"','class="logo" style="font-size:44px"')}<h1>${esc(S.brand)}</h1><h2 style="font-weight:400">${esc(S.tagline)}</h2><p>${esc(S.hero_desc)}</p>${S.hero_img?`<img src="${esc(S.hero_img)}" alt="">`:art('hero')}<p><a class="btn" onclick="go('about')">Kenali Akhawat</a> <a class="btn o" onclick="go('kontak')">Hubungi Kami</a></p></section>
+<section id="about"><h2>Apa Itu Akhawat?</h2><div class="grid">${[['Apa itu Akhawat','what'],['Mengapa Akhawat hadir','why'],['Yang membedakan','diff'],['Siapa yang bisa memakai','who']].map(([t,k])=>`<div class="card"><h3>${t}</h3><p>${esc(S.about[k])}</p></div>`).join('')}</div></section>
+<section id="visi"><h2>Visi & Misi</h2><div class="grid"><div class="card"><h3>Visi</h3><p>${esc(S.vision)}</p></div><div class="card"><h3>Misi</h3><ul>${S.missions.map(m=>`<li>${esc(m)}</li>`).join('')}</ul></div></div></section>
+<section id="layanan"><h2>Layanan Akhawat</h2><div class="grid">${sv.map(s=>`<div class="card">${s.img?`<img src="${esc(s.img)}" alt="">`:art(kind(s.name))}<h3>${esc(s.name)}</h3><b>${esc(s.short)}</b><p>${esc(s.detail)}</p>${s.examples.length?`<ul>${s.examples.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>`:''}<a class="btn s" target="_blank" href="${wa('Assalamualaikum, saya ingin bertanya tentang '+s.name)}">Hubungi via WhatsApp</a></div>`).join('')}</div></section>
+<section id="testi"><h2>Testimoni</h2><div class="grid">${l.map(tcard).join('')||'<p>Belum ada testimoni.</p>'}</div><p>${P.length>l.length||showAll?`<button class="btn o s" onclick="showAll=!showAll;render()">${showAll?'Tampilkan lebih sedikit':'Lihat semua'}</button> `:''}<a class="btn" href="#/testimoni">Berikan Testimoni</a></p></section>
+<section id="kontak"><h2>Kontak</h2><p>${esc(S.address)}</p>${S.ig?`<p>Instagram: ${esc(S.ig)}</p>`:''}<a class="btn" target="_blank" href="${wa('Assalamualaikum')}">Chat WhatsApp</a></section><footer>© ${esc(S.brand)} · <a href="#/admin">Admin</a></footer>`}
+function form(){
+ if(done)return head()+`<section style="text-align:center"><h1>THANK YOU FOR YOUR TRUST</h1><p>Terima kasih telah menjadi bagian dari perjalanan Akhawat.</p><p>Baarakallahu fiikum 🤍</p><a class="btn" href="#/">Kembali ke Beranda</a></section>`;
+ return head()+`<section style="max-width:600px"><h1>SHARE YOUR EXPERIENCE</h1><p>Terima kasih telah mempercayakan kebutuhanmu kepada Akhawat. Ceritakan pengalamanmu bersama kami. Setiap ulasan sangat berarti untuk perkembangan Akhawat.</p>
+<form onsubmit="submitT(event)" novalidate><input class="hp" name="website" tabindex="-1" autocomplete="off">
+<label>Nama<input name="name" maxlength="80" required></label>
+<label>Layanan yang digunakan<select name="service" onchange="$('#pr').style.display=this.value==='Akhawat Store'?'block':'none'"><option value="">Pilih layanan</option>${SV.map(s=>`<option>${s}</option>`).join('')}</select></label>
+<label id="pr" style="display:none">Produk yang dibeli<input name="product" maxlength="150"></label>
+<div><b style="font-size:14px">Rating</b><div id="rt">${[1,2,3,4,5].map(n=>`<span data-n="${n}">★</span>`).join('')}</div><input type="hidden" name="rate"></div>
+<label>Pengalaman menggunakan layanan / berbelanja<textarea name="story" rows="4" maxlength="1500"></textarea></label>
+<label>Saran dan masukan<textarea name="feedback" rows="3" maxlength="1000"></textarea></label>
+<label><input type="radio" name="consent" value="1"> Saya mengizinkan ulasan saya ditampilkan di website dan media sosial Akhawat.</label>
+<label><input type="radio" name="consent" value="0"> Saya tidak mengizinkan ulasan saya dipublikasikan.</label>
+<p class="err" id="err"></p><button class="btn">Kirim Testimoni</button></form></section>`}
+async function submitT(e){e.preventDefault();const f=e.target,v=n=>f[n].value.trim(),er=[];
+ if(f.website.value){done=true;return render()}
+ const rate=+f.rate.value;
+ if(v('name').length<2)er.push('Nama minimal 2 huruf.');if(!f.service.value)er.push('Pilih layanan.');if(!rate)er.push('Pilih rating bintang.');
+ if(v('story').length<10)er.push('Ceritakan pengalamanmu (minimal 10 karakter).');if(!f.consent.value)er.push('Pilih persetujuan publikasi.');
+ if(Date.now()-t0<4000)er.push('Mohon periksa kembali isian lalu kirim.');
+ if(Date.now()-(+localStorage.lastT||0)<60000)er.push('Tunggu sebentar sebelum mengirim lagi.');
+ if(er.length)return $('#err').textContent=er.join(' ');
+ const {error}=await sb.from('testimonials').insert({name:v('name'),service:f.service.value,product:f.service.value==='Akhawat Store'?v('product')||null:null,rating:rate,story:v('story'),feedback:v('feedback')||null,consent:f.consent.value==='1',status:'pending'});
+ if(error)return $('#err').textContent='Gagal mengirim, coba lagi nanti.';
+ localStorage.lastT=Date.now();done=true;render()}
+// ===== ADMIN =====
+const fld=(p,l,o={})=>{const v=get(S,p),a=Array.isArray(v);const val=a?v.join('\n'):(v??'');
+ return `<label>${l}${o.t||a?`<textarea data-p="${p}" ${a?'data-arr=1':''} rows="${o.r||3}">${esc(val)}</textarea>`:`<input data-p="${p}" ${o.c?'type=color':''} value="${esc(val)}">`}${o.img?`<input type=file accept="image/*" onchange="up(this,'${p}')">`:''}</label>`};
+function sync(){document.querySelectorAll('[data-p]').forEach(el=>set(S,el.dataset.p,el.dataset.arr?el.value.split('\n').map(x=>x.trim()).filter(Boolean):el.value))}
+async function up(el,p){const f=el.files[0];if(!f)return;sync();const n=Date.now()+'-'+f.name.replace(/[^\w.]/g,'');
+ const {error}=await sb.storage.from('media').upload(n,f);if(error)return alert(error.message);set(S,p,sb.storage.from('media').getPublicUrl(n).data.publicUrl);render()}
+async function save(){sync();const {error}=await sb.from('settings').upsert({key:'site',value:S});alert(error?error.message:'Tersimpan ✓')}
+function setTab(t){if(tab!=='testi')sync();tab=t;render()}
+function svA(i,a){sync();const s=S.services;if(a==='del'){if(!confirm('Hapus layanan ini?'))return;s.splice(i,1)}else if(a==='hide')s[i].hidden=!s[i].hidden;else{const j=a==='up'?i-1:i+1;if(j<0||j>=s.length)return;[s[i],s[j]]=[s[j],s[i]]}render()}
+function svAdd(){sync();S.services.push({name:'Layanan Baru',icon:'✨',img:'',short:'',detail:'',examples:[],hidden:false});render()}
+async function tA(id,patch){const {error}=await sb.from('testimonials').update(patch).eq('id',id);if(error)alert(error.message);await load();render()}
+async function tDel(id){if(!confirm('Hapus testimoni ini permanen?'))return;await sb.from('testimonials').delete().eq('id',id);await load();render()}
+async function login(e){e.preventDefault();const f=e.target;const {error}=await sb.auth.signInWithPassword({email:f.email.value,password:f.password.value});
+ if(error)return $('#err').textContent='Email atau password salah.';user=(await sb.auth.getUser()).data.user;await load();render()}
+async function logout(){await sb.auth.signOut();user=null;await load();location.hash='#/'}
+function admin(){
+ if(!user)return `<section style="max-width:380px"><h2>Login Admin</h2><form onsubmit="login(event)"><label>Email<input name="email" type="email" required></label><label>Password<input name="password" type="password" required></label><p class="err" id="err"></p><button class="btn">Masuk</button> <a href="#/">Kembali</a></form></section>`;
+ const tabs=[['teks','Teks & Kontak'],['layanan','Layanan'],['testi','Testimoni'],['desain','Desain']];
+ let b='';
+ if(tab==='teks')b=[['brand','Nama brand'],['tagline','Tagline'],['hero_desc','Deskripsi singkat',{t:1}],['about.what','Apa itu Akhawat',{t:1}],['about.why','Mengapa Akhawat hadir',{t:1}],['about.diff','Yang membedakan',{t:1}],['about.who','Siapa yang bisa memakai',{t:1}],['vision','Visi',{t:1}],['missions','Misi (satu per baris)',{r:5}],['wa','Nomor WhatsApp (format 628xxxxxxxxxx)'],['ig','Instagram'],['address','Alamat / kota']].map(a=>fld(a[0],a[1],a[2])).join('');
+ if(tab==='layanan')b=S.services.map((s,i)=>`<div class="card" style="margin-bottom:14px"><b>${i+1}. ${esc(s.name)}</b> ${s.hidden?'<span class=badge>disembunyikan</span>':''}${fld(`services.${i}.name`,'Nama')}${fld(`services.${i}.icon`,'Ikon (emoji)')}${fld(`services.${i}.img`,'Gambar (URL / unggah)',{img:1})}${fld(`services.${i}.short`,'Deskripsi singkat')}${fld(`services.${i}.detail`,'Penjelasan',{t:1})}${fld(`services.${i}.examples`,'Contoh layanan (satu per baris)',{r:4})}
+ <button class="btn s" onclick="svA(${i},'up')">↑</button> <button class="btn s" onclick="svA(${i},'down')">↓</button> <button class="btn o s" onclick="svA(${i},'hide')">${s.hidden?'Tampilkan':'Sembunyikan'}</button> <button class="btn r s" onclick="svA(${i},'del')">Hapus</button></div>`).join('')+`<button class="btn o" onclick="svAdd()">+ Tambah layanan</button>`;
+ if(tab==='desain')b=[['colors.bg','Warna latar',{c:1}],['colors.card','Warna kartu',{c:1}],['colors.accent','Warna aksen/tombol',{c:1}],['colors.dark','Warna teks',{c:1}],['logo','Logo',{img:1}],['hero_img','Gambar/ilustrasi utama',{img:1}]].map(a=>fld(a[0],a[1],a[2])).join('')+['head','body'].map(k=>`<label>Font ${k==='head'?'judul':'isi'}<select data-p="fonts.${k}">${['Playfair Display','Lora','Cormorant Garamond','Poppins','Nunito','Montserrat'].map(x=>`<option ${S.fonts[k]===x?'selected':''}>${x}</option>`).join('')}</select></label>`).join('');
+ if(tab==='testi')b=[...T].sort((a,c)=>(a.status==='pending'?0:1)-(c.status==='pending'?0:1)).map(t=>`<div class="card" style="margin-bottom:12px"><span class="badge">${{pending:'menunggu',approved:'disetujui',rejected:'ditolak'}[t.status]}</span> ${t.featured?'<span class=badge>★ unggulan</span>':''} ${t.consent?'':'<span class="badge">TIDAK izin publikasi</span>'}<div class="st">${stars(t.rating)}</div><b>${esc(t.name)}</b> <small>${esc(t.service)}${t.product?' · '+esc(t.product):''}</small><p>${esc(t.story)}</p>${t.feedback?`<small>Saran: ${esc(t.feedback)}</small>`:''}
+ <input id="dn-${t.id}" placeholder="Nama tampilan (opsional)" value="${esc(t.display_name||'')}"><p><button class="btn s" ${t.consent?'':'disabled'} onclick="tA('${t.id}',{status:'approved'})">Setujui</button> <button class="btn o s" onclick="tA('${t.id}',{status:'rejected',featured:false})">Tolak</button> <button class="btn o s" onclick="tA('${t.id}',{featured:${!t.featured}})">${t.featured?'Lepas unggulan':'Unggulkan'}</button> <button class="btn o s" onclick="tA('${t.id}',{display_name:$('#dn-${t.id}').value.trim()||null})">Simpan nama</button> <button class="btn r s" onclick="tDel('${t.id}')">Hapus</button></p></div>`).join('')||'<p>Belum ada testimoni masuk.</p>';
+ return `<div class="wrap adm"><p><a href="#/">← Lihat website</a> · <a onclick="logout()" style="cursor:pointer">Keluar</a></p><h2>Dashboard Admin</h2><div class="tabs">${tabs.map(([k,l])=>`<button class="btn ${tab===k?'':'o'} s" onclick="setTab('${k}')">${l}</button>`).join('')}</div>${b}${tab==='testi'?'':'<p><button class="btn" onclick="save()">Simpan Perubahan</button></p>'}</div>`}
+function render(){theme();const r=route();$('#app').innerHTML=r==='admin'?admin():r==='form'?form():home();
+ const rt=$('#rt');if(rt)rt.onclick=e=>{const n=+e.target.dataset.n;if(!n)return;document.querySelector('[name=rate]').value=n;rt.querySelectorAll('span').forEach(s=>s.classList.toggle('on',+s.dataset.n<=n))}}
+addEventListener('hashchange',()=>{if(route()==='form')done=false,t0=Date.now();render();scrollTo(0,0)});
+(async()=>{render();user=(await sb.auth.getSession()).data.session?.user||null;await load();render()})();
+</script></body></html>
