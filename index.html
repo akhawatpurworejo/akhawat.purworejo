@@ -6,7 +6,7 @@
 h1,h2,h3{font-family:var(--hf);margin:.2em 0}a{color:inherit}
 header{position:sticky;top:0;background:var(--bg);z-index:5;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #0001}
 header img,.logo{height:36px}.logo{font:700 20px var(--hf);letter-spacing:2px}
-nav{display:flex;gap:14px;overflow-x:auto;flex:1;white-space:nowrap;font-size:14px}nav a{text-decoration:none;cursor:pointer;opacity:.8}
+nav{display:flex;gap:14px;overflow-x:auto;flex:1;white-space:nowrap;font-size:14px}nav a{text-decoration:none;cursor:pointer;opacity:.8;padding:5px 0}nav a:hover{opacity:1;color:var(--ac)}@media(max-width:640px){header{flex-wrap:wrap;gap:8px}header nav{order:3;flex-basis:100%;padding:4px 0 2px;gap:18px;font-size:13px}header .btn{margin-left:auto}.hero{padding-top:34px}}
 .btn{background:var(--ac);color:#fff;border:0;border-radius:999px;padding:10px 20px;font:600 14px inherit;cursor:pointer;text-decoration:none;display:inline-block}
 .btn.o{background:none;color:var(--dk);border:1px solid var(--ac)}.btn.s{padding:6px 12px;font-size:12px}.btn.r{background:#a33}
 section,.wrap{max-width:1000px;margin:auto;padding:44px 18px}
@@ -46,7 +46,8 @@ const get=(o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
 const set=(o,p,v)=>{const k=p.split('.'),l=k.pop();k.reduce((a,x)=>a[x]??={},o)[l]=v};
 const sb=supabase.createClient(SB_URL,SB_KEY);
 let S=structuredClone(D),T=[],user=null,tab='teks',showAll=false,done=false,t0=Date.now();
-const route=()=>location.hash.startsWith('#/admin')?'admin':location.hash.startsWith('#/testimoni')?'form':'home';
+const pageFile=()=>location.pathname.split('/').pop()||'index.html';
+const route=()=>location.hash.startsWith('#/admin')?'admin':(location.hash.startsWith('#/testimoni')||pageFile()==='testimoni-form.html')?'form':({ 'index.html':'home','tentang.html':'about','visi-misi.html':'visi','layanan.html':'layanan','testimoni.html':'testi','kontak.html':'kontak' }[pageFile()]||'home');
 const kind=n=>(n||'').toLowerCase().match(/ride|assist|care|gift|store/)?.[0]||'hero';
 function art(k){const a='#a98467',o='#3e2c22',skin='#f1d2b8',
  P={ride:[[46,200],[172,95]],assist:[[46,200],[154,200]],care:[[90,186],[110,186]],gift:[[84,188],[116,188]],store:[[46,200],[154,200]],hero:[[46,200],[172,95]]}[k],
@@ -69,19 +70,19 @@ function theme(){const c=S.colors,f=S.fonts;
  $('#gf').href='https://fonts.googleapis.com/css2?'+[...new Set([f.head,f.body])].map(x=>'family='+x.replace(/ /g,'+')+':wght@400;600;700').join('&')+'&display=swap';
  document.body.style.fontFamily=`'${f.body}',sans-serif`;document.title=S.brand}
 const logo=()=>S.logo?`<img src="${esc(S.logo)}" alt="${esc(S.brand)}">`:`<span class="logo">${esc(S.brand)}</span>`;
-window.go=id=>{if(route()!=='home'){location.hash='#/';setTimeout(()=>go(id),80);return}document.getElementById(id)?.scrollIntoView({behavior:'smooth'})};
+window.go=id=>{const files={top:'index.html',about:'tentang.html',visi:'visi-misi.html',layanan:'layanan.html',testi:'testimoni.html',kontak:'kontak.html'};location.href=files[id]||'index.html'};
 const tcard=t=>`<div class="card"><div class="st">${stars(t.rating)}</div><p>“${esc(t.story)}”</p><b>${esc(t.display_name||t.name)}</b><small>${esc(t.service)}${t.product?' · '+esc(t.product):''}</small></div>`;
-function head(){return `<header><a href="#/">${logo()}</a><nav>${[['top','Beranda'],['about','Tentang Akhawat'],['visi','Visi & Misi'],['layanan','Layanan'],['testi','Testimoni'],['kontak','Kontak']].map(([i,l])=>`<a onclick="go('${i}')">${l}</a>`).join('')}</nav><a class="btn s" href="${wa('Assalamualaikum, saya ingin bertanya tentang layanan Akhawat')}" target="_blank">WhatsApp</a></header>`}
+function head(){return `<header><a href="index.html">${logo()}</a><nav>${[['index.html','Beranda'],['tentang.html','Tentang Akhawat'],['visi-misi.html','Visi & Misi'],['layanan.html','Layanan'],['testimoni.html','Testimoni'],['kontak.html','Kontak']].map(([u,l])=>`<a href="${u}">${l}</a>`).join('')}</nav><a class="btn s" href="${wa('Assalamualaikum, saya ingin bertanya tentang layanan Akhawat')}" target="_blank">WhatsApp</a></header>`}
 function home(){
  const sv=S.services.filter(s=>!s.hidden),P=pub();let l=P.filter(t=>t.featured);l=showAll?P:l.length?l:P.slice(0,6);
  return head()+`<section class="hero" id="top">${S.logo?logo():''}<h1>${esc(S.brand)}</h1><h2 style="font-weight:400">${esc(S.tagline)}</h2><p>${esc(S.hero_desc)}</p>${S.hero_img?`<img src="${esc(S.hero_img)}" alt="">`:art('hero')}<p><a class="btn" onclick="go('about')">Kenali Akhawat</a> <a class="btn o" onclick="go('kontak')">Hubungi Kami</a></p></section>
 <section id="about"><h2>Apa Itu Akhawat?</h2><div class="grid">${[['Apa itu Akhawat','what'],['Mengapa Akhawat hadir','why'],['Yang membedakan','diff'],['Siapa yang bisa memakai','who']].map(([t,k])=>`<div class="card"><h3>${t}</h3><p>${esc(S.about[k])}</p></div>`).join('')}</div></section>
 <section id="visi"><h2>Visi & Misi</h2><div class="grid"><div class="card"><h3>Visi</h3><p>${esc(S.vision)}</p></div><div class="card"><h3>Misi</h3><ul>${S.missions.map(m=>`<li>${esc(m)}</li>`).join('')}</ul></div></div></section>
 <section id="layanan"><h2>Layanan Akhawat</h2><div class="grid">${sv.map(s=>`<div class="card">${s.img?`<img src="${esc(s.img)}" alt="">`:art(kind(s.name))}<h3>${esc(s.name)}</h3><b>${esc(s.short)}</b><p>${esc(s.detail)}</p>${s.examples.length?`<ul>${s.examples.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>`:''}<a class="btn s" target="_blank" href="${wa('Assalamualaikum, saya ingin bertanya tentang '+s.name)}">Hubungi via WhatsApp</a></div>`).join('')}</div></section>
-<section id="testi"><h2>Testimoni</h2><div class="grid">${l.map(tcard).join('')||'<p>Belum ada testimoni.</p>'}</div><p>${P.length>l.length||showAll?`<button class="btn o s" onclick="showAll=!showAll;render()">${showAll?'Tampilkan lebih sedikit':'Lihat semua'}</button> `:''}<a class="btn" href="#/testimoni">Berikan Testimoni</a></p></section>
+<section id="testi"><h2>Testimoni</h2><div class="grid">${l.map(tcard).join('')||'<p>Belum ada testimoni.</p>'}</div><p>${P.length>l.length||showAll?`<button class="btn o s" onclick="showAll=!showAll;render()">${showAll?'Tampilkan lebih sedikit':'Lihat semua'}</button> `:''}<a class="btn" href="testimoni-form.html">Berikan Testimoni</a></p></section>
 <section id="kontak"><h2>Kontak</h2><p>${esc(S.address)}</p>${S.ig?`<p>Instagram: ${esc(S.ig)}</p>`:''}<a class="btn" target="_blank" href="${wa('Assalamualaikum')}">Chat WhatsApp</a></section><footer>© ${esc(S.brand)} · <a href="#/admin">Admin</a></footer>`}
 function form(){
- if(done)return head()+`<section style="text-align:center"><h1>THANK YOU FOR YOUR TRUST</h1><p>Terima kasih telah menjadi bagian dari perjalanan Akhawat.</p><p>Baarakallahu fiikum 🤍</p><a class="btn" href="#/">Kembali ke Beranda</a></section>`;
+ if(done)return head()+`<section style="text-align:center"><h1>THANK YOU FOR YOUR TRUST</h1><p>Terima kasih telah menjadi bagian dari perjalanan Akhawat.</p><p>Baarakallahu fiikum 🤍</p><a class="btn" href="index.html">Kembali ke Beranda</a></section>`;
  return head()+`<section style="max-width:600px"><h1>SHARE YOUR EXPERIENCE</h1><p>Terima kasih telah mempercayakan kebutuhanmu kepada Akhawat. Ceritakan pengalamanmu bersama kami. Setiap ulasan sangat berarti untuk perkembangan Akhawat.</p>
 <form onsubmit="submitT(event)" novalidate><input class="hp" name="website" tabindex="-1" autocomplete="off">
 <label>Nama<input name="name" maxlength="80" required></label>
@@ -131,6 +132,7 @@ function admin(){
  <input id="dn-${t.id}" placeholder="Nama tampilan (opsional)" value="${esc(t.display_name||'')}"><p><button class="btn s" ${t.consent?'':'disabled'} onclick="tA('${t.id}',{status:'approved'})">Setujui</button> <button class="btn o s" onclick="tA('${t.id}',{status:'rejected',featured:false})">Tolak</button> <button class="btn o s" onclick="tA('${t.id}',{featured:${!t.featured}})">${t.featured?'Lepas unggulan':'Unggulkan'}</button> <button class="btn o s" onclick="tA('${t.id}',{display_name:$('#dn-${t.id}').value.trim()||null})">Simpan nama</button> <button class="btn r s" onclick="tDel('${t.id}')">Hapus</button></p></div>`).join('')||'<p>Belum ada testimoni masuk.</p>';
  return `<div class="wrap adm"><p><a href="#/">← Lihat website</a> · <a onclick="logout()" style="cursor:pointer">Keluar</a></p><h2>Dashboard Admin</h2><div class="tabs">${tabs.map(([k,l])=>`<button class="btn ${tab===k?'':'o'} s" onclick="setTab('${k}')">${l}</button>`).join('')}</div>${b}${tab==='testi'?'':'<p><button class="btn" onclick="save()">Simpan Perubahan</button></p>'}</div>`}
 function render(){theme();const r=route();$('#app').innerHTML=r==='admin'?admin():r==='form'?form():home();
+ if(!['admin','form'].includes(r)){const target={home:'top',about:'about',visi:'visi',layanan:'layanan',testi:'testi',kontak:'kontak'}[r];document.querySelectorAll('#app section').forEach(s=>{if(s.id!==target)s.remove()});const title={home:'Beranda',about:'Tentang Akhawat',visi:'Visi & Misi',layanan:'Layanan',testi:'Testimoni',kontak:'Kontak'}[r];document.title=`${title} | ${S.brand}`;}
  const rt=$('#rt');if(rt)rt.onclick=e=>{const n=+e.target.dataset.n;if(!n)return;document.querySelector('[name=rate]').value=n;rt.querySelectorAll('span').forEach(s=>s.classList.toggle('on',+s.dataset.n<=n))}}
 addEventListener('hashchange',()=>{if(route()==='form')done=false,t0=Date.now();render();scrollTo(0,0)});
 (async()=>{render();user=(await sb.auth.getSession()).data.session?.user||null;await load();render()})();

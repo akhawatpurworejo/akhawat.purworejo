@@ -1,0 +1,19 @@
+AKHAWAT PURWOREJO — WEBSITE MULTI-HALAMAN
+
+File halaman:
+- index.html (Beranda)
+- tentang.html (Tentang Akhawat)
+- visi-misi.html (Visi & Misi)
+- layanan.html (Layanan)
+- testimoni.html (Testimoni)
+- testimoni-form.html (Formulir testimoni)
+- kontak.html (Kontak)
+
+Cara memasang ke GitHub Pages:
+1. Ekstrak ZIP ini.
+2. Buka repository GitHub akhawat.purworejo.
+3. Unggah semua file HTML di atas ke folder utama repository (sejajar dengan index.html lama).
+4. Pilih Commit changes.
+5. Buka website dan uji menu navigasi.
+
+Catatan: konfigurasi Supabase dan isi halaman yang ada dipertahankan dari file sumber. ZIP sumber hanya berisi index.html; aset gambar terpisah tidak disertakan.
