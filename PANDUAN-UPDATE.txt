@@ -1,0 +1,21 @@
+PANDUAN UPDATE WEBSITE AKHAWAT PURWOREJO
+
+1. Ekstrak ZIP ini.
+2. Upload semua file HTML ke root repository GitHub Pages (folder utama, sejajar).
+3. Commit changes.
+4. Buka https://akhawatpurworejo.github.io/akhawat.purworejo/
+
+HALAMAN TERPISAH:
+- index.html (Beranda)
+- tentang.html
+- visi-misi.html
+- layanan.html
+- testimoni.html
+- kontak.html
+
+admin.html menyimpan aplikasi admin/Supabase dari file asli agar konfigurasi dashboard dan moderasi testimoni tetap tersedia. Tautan Area Admin berada di footer. Formulir testimoni lama dapat dibuka melalui admin.html#/testimoni.
+
+CATATAN:
+- Nomor WhatsApp dan Instagram belum diisi karena belum ada data kontak yang dikonfirmasi. Tombol WhatsApp saat ini membuka chat dengan pesan awal, tanpa nomor tujuan.
+- Isi visi/misi dan deskripsi layanan mengikuti informasi yang ada di file awal; silakan lengkapi contoh yang masih bersifat sementara melalui dashboard admin asli.
+- Setelah upload, tunggu beberapa menit agar GitHub Pages memperbarui situs.
