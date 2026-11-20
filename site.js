@@ -68,6 +68,15 @@
 /* Hiasan: motif latar + maskot di semua halaman (file gambar ada di folder assets) */
 (function () {
   function init() {
+    /* Halaman yang latarnya tertutup warna penuh (mis. Beranda): motif dipasang di atas, tipis & tembus pandang */
+    var hasBefore = false;
+    try { hasBefore = getComputedStyle(document.body, '::before').content.replace(/["']/g, '') !== 'none'; } catch (e) {}
+    if (!hasBefore && !document.getElementById('akw-over')) {
+      var ov = document.createElement('style');
+      ov.id = 'akw-over';
+      ov.textContent = 'body::after{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.2;mix-blend-mode:multiply;z-index:1;pointer-events:none}';
+      document.head.appendChild(ov);
+    }
     if (!document.getElementById('akw-deco')) {
       var st = document.createElement('style');
       st.id = 'akw-deco';
