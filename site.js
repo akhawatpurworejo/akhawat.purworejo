@@ -64,3 +64,34 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
 })();
+
+/* Hiasan: motif latar + maskot di semua halaman (file gambar ada di folder assets) */
+(function () {
+  function init() {
+    if (!document.getElementById('akw-deco')) {
+      var st = document.createElement('style');
+      st.id = 'akw-deco';
+      st.textContent =
+        'body{position:relative}' +
+        'body::before{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.28;z-index:-1;pointer-events:none}' +
+        '.page-hero,.hero-wrap{position:relative;overflow:hidden}' +
+        '.page-hero{background:linear-gradient(rgba(238,229,216,.86),rgba(238,229,216,.86)),url(assets/pattern.webp) center/cover}' +
+        '.page-hero>div{position:relative;z-index:1}' +
+        '.mascot{position:absolute;right:max(24px,calc(50% - 560px));bottom:0;height:270px;width:auto;max-width:42vw;object-fit:contain;z-index:0;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(52,40,32,.12))}' +
+        '@media(max-width:760px){.mascot{height:150px;right:10px}.page-hero .lead{padding-right:95px}.page-hero .display{padding-right:40px}}';
+      document.head.appendChild(st);
+    }
+    var hero = document.querySelector('.page-hero');
+    if (hero && !hero.querySelector('.mascot') && !/layanan|pesan/.test(location.pathname)) {
+      var f = (location.pathname.split('/').pop() || 'index.html').replace('.html', '');
+      var map = { tentang: 'duo', 'visi-misi': 'point', testimoni: 'gift', 'testimoni-form': 'gift', kontak: 'cs' };
+      if (map[f]) {
+        var im = document.createElement('img');
+        im.className = 'mascot'; im.alt = ''; im.setAttribute('aria-hidden', 'true');
+        im.src = 'assets/' + map[f] + '.webp';
+        hero.appendChild(im);
+      }
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
