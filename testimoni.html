@@ -34,4 +34,4 @@ fetch(SB+'/rest/v1/testimonials?select=name,display_name,show_name,service,produ
  s.style.display='none';
  document.getElementById('list').innerHTML=d.map(function(x){return '<article class="card t-card"><div class="st">'+stars(x.rating)+'</div><p>“'+esc(x.story)+'”</p><b>'+esc(who(x))+'</b><small>'+esc(x.service)+(x.product?' · '+esc(x.product):'')+'</small></article>'}).join('')})
 .catch(function(){document.getElementById('state').textContent='Testimoni belum dapat dimuat saat ini. Silakan coba lagi nanti.'});
-</script></body></html>
+</script><script src="site.js" defer></script></body></html>

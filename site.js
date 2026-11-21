@@ -25,8 +25,48 @@
     if (/^https?:\/\//i.test(v)) return v;
     return 'https://www.instagram.com/' + v.replace(/^@/, '').replace(/\/+$/, '') + '/';
   }
+
+  var MASC = { 'tentang': 'mascot_tentang', 'visi-misi': 'mascot_visi', 'testimoni': 'mascot_testimoni', 'testimoni-form': 'mascot_testimoni', 'kontak': 'mascot_kontak', 'layanan': 'mascot_layanan', 'pesan': 'mascot_pesan' };
+  function applyDesign(D) {
+    if (!D) return;
+    var g = function (k) { return filled(D[k]) ? String(D[k]).trim() : ''; };
+    var r = '', css = '';
+    if (g('bg')) r += '--paper:' + g('bg') + ';';
+    if (g('band')) r += '--cream:' + g('band') + ';';
+    if (g('card')) r += '--white:' + g('card') + ';';
+    if (g('accent')) r += '--accent:' + g('accent') + ';';
+    if (g('ink')) r += '--ink:' + g('ink') + ';';
+    if (r) css += ':root{' + r + '}';
+    if (g('bg') && /^#[0-9a-f]{6}$/i.test(g('bg'))) css += 'header{background:' + g('bg') + 'ef!important}';
+    var fams = [];
+    if (g('font_head')) { fams.push(g('font_head')); css += 'h1,h2,h3,.display,.page-title,.brand,.num{font-family:"' + g('font_head') + '",serif!important}'; }
+    if (g('font_body')) { fams.push(g('font_body')); css += 'body,input,select,textarea,button{font-family:"' + g('font_body') + '",sans-serif!important}'; }
+    if (fams.length) {
+      var lk = document.getElementById('akw-font') || document.createElement('link');
+      lk.id = 'akw-font'; lk.rel = 'stylesheet';
+      lk.href = 'https://fonts.googleapis.com/css2?' + fams.map(function (x) { return 'family=' + x.replace(/ /g, '+') + ':wght@400;500;600;700'; }).join('&') + '&display=swap';
+      if (!lk.parentNode) document.head.appendChild(lk);
+    }
+    if (g('pattern')) {
+      var u = g('pattern').replace(/"/g, '');
+      css += 'body::before{background-image:url("' + u + '")!important}.page-hero{background-image:linear-gradient(rgba(238,229,216,.86),rgba(238,229,216,.86)),url("' + u + '")!important}';
+    }
+    var st = document.getElementById('akw-design') || document.createElement('style');
+    st.id = 'akw-design'; st.textContent = css;
+    document.head.appendChild(st);
+    if (g('logo')) {
+      document.querySelectorAll('.brand').forEach(function (el) {
+        var im = el.querySelector('img.akw-logo');
+        if (!im) { el.textContent = ''; im = document.createElement('img'); im.className = 'akw-logo'; im.alt = 'Akhawat'; im.style.cssText = 'height:42px;width:auto;display:block'; el.appendChild(im); }
+        im.src = g('logo');
+      });
+    }
+    var f = (location.pathname.split('/').pop() || 'index.html').replace('.html', '');
+    if (MASC[f] && g(MASC[f])) document.querySelectorAll('img.mascot').forEach(function (m) { m.src = g(MASC[f]); });
+  }
   function apply(W) {
     if (!W) return;
+    try { applyDesign(W.design); } catch (e) {}
     document.querySelectorAll('[data-k]').forEach(function (el) {
       var v = get(W, el.getAttribute('data-k'));
       if (filled(v)) setText(el, v);

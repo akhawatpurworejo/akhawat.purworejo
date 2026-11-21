@@ -50,4 +50,4 @@ $('#f').onsubmit=function(e){e.preventDefault();
   body:JSON.stringify({name:name,service:service,product:service==='Akhawat Store'?(prod||null):null,rating:rate,story:story,feedback:fb||null,consent:c.value==='1',show_name:sh.value==='1',status:'pending'})})
  .then(function(r){if(!r.ok)throw 0;try{localStorage.lastT=Date.now()}catch(x){}thanks()})
  .catch(function(){$('#err').textContent='Gagal mengirim, coba lagi nanti.';btn.disabled=false;btn.textContent='Kirim Testimoni'})};
-</script></body></html>
+</script><script src="site.js" defer></script></body></html>
