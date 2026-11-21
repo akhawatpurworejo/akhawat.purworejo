@@ -68,21 +68,13 @@
 /* Hiasan: motif latar + maskot di semua halaman (file gambar ada di folder assets) */
 (function () {
   function init() {
-    /* Halaman yang latarnya tertutup warna penuh (mis. Beranda): motif dipasang di atas, tipis & tembus pandang */
-    var hasBefore = false;
-    try { hasBefore = getComputedStyle(document.body, '::before').content.replace(/["']/g, '') !== 'none'; } catch (e) {}
-    if (!hasBefore && !document.getElementById('akw-over')) {
-      var ov = document.createElement('style');
-      ov.id = 'akw-over';
-      ov.textContent = 'body::after{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.2;mix-blend-mode:multiply;z-index:1;pointer-events:none}';
-      document.head.appendChild(ov);
-    }
     if (!document.getElementById('akw-deco')) {
       var st = document.createElement('style');
       st.id = 'akw-deco';
       st.textContent =
         'body{position:relative}' +
-        'body::before{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.28;z-index:-1;pointer-events:none}' +
+        'body::before{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.4;z-index:-1;pointer-events:none}' +
+        '.band{background:rgba(238,229,216,.78)}.card{background:rgba(255,253,249,.92)}' +
         '.page-hero,.hero-wrap{position:relative;overflow:hidden}' +
         '.page-hero{background:linear-gradient(rgba(238,229,216,.86),rgba(238,229,216,.86)),url(assets/pattern.webp) center/cover}' +
         '.page-hero>div{position:relative;z-index:1}' +
