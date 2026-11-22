@@ -1,0 +1,4 @@
+window.AKHAWAT = {
+  url: "TEMPEL_PROJECT_URL_DI_SINI",
+  key: "TEMPEL_ANON_KEY_DI_SINI"
+};
