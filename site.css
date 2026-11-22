@@ -7,7 +7,7 @@ h1{font-size:clamp(2.6rem,9vw,4.6rem)}h2{font-size:clamp(1.9rem,6vw,2.7rem)}h3{f
 p{color:var(--mut);max-width:60ch}a{color:inherit}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 section{padding:64px 0}.alt{background:var(--alt)}
-header{position:sticky;top:0;z-index:20;background:rgba(30,21,18,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:20;background:#1e1512;border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font-size:1.5rem;letter-spacing:.14em;text-decoration:none}
 nav{display:flex;gap:22px;align-items:center}nav a{text-decoration:none;color:var(--mut);font-size:.95rem}nav a:hover{color:var(--cream)}
@@ -88,3 +88,5 @@ footer .logo{font-size:1.3rem}footer p{font-size:.95rem}.copy{margin-top:28px;pa
 .kcard span{color:var(--mocha);font-size:.92rem;font-weight:600}.kcard strong{font:500 1.6rem 'Cormorant Garamond',serif}
 .kcard a{color:var(--cream);text-decoration:none}.kcard .btn{margin-top:12px;justify-self:start}
 .kform{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}.kform form{padding:16px 0 0}
+
+body>header{background:#1e1512!important}body>header a,body>header .menu{color:#f3e9dc}body>header nav a{color:#cdbfb0}body>header nav a[aria-current]{color:#f3e9dc}
