@@ -113,10 +113,10 @@
       st.id = 'akw-deco';
       st.textContent =
         'body{position:relative}' +
-        'body::before{content:"";position:fixed;inset:0;background:url(assets/pattern.webp) center/cover;opacity:.4;z-index:-1;pointer-events:none}' +
+        'body::before{content:"";position:fixed;inset:0;background:url(assets/pola.webp) center/cover;opacity:.4;z-index:-1;pointer-events:none}' +
         '.band{background:rgba(238,229,216,.78)}.card{background:rgba(255,253,249,.92)}' +
         '.page-hero,.hero-wrap{position:relative;overflow:hidden}' +
-        '.page-hero{background:linear-gradient(rgba(238,229,216,.86),rgba(238,229,216,.86)),url(assets/pattern.webp) center/cover}' +
+        '.page-hero{background:linear-gradient(rgba(238,229,216,.86),rgba(238,229,216,.86)),url(assets/pola.webp) center/cover}' +
         '.page-hero>div{position:relative;z-index:1}' +
         '.mascot{position:absolute;right:max(24px,calc(50% - 560px));bottom:0;height:270px;width:auto;max-width:42vw;object-fit:contain;z-index:0;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(52,40,32,.12))}' +
         '@media(max-width:760px){.mascot{height:150px;right:10px}.page-hero .lead{padding-right:95px}.page-hero .display{padding-right:40px}}';
