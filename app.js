@@ -25,14 +25,18 @@ store:{n:"Akhawat Store",m:"S",s:"Perlengkapan muslimah dan kebutuhan sehari-har
  items:["Perlengkapan muslimah","Kebutuhan sehari-hari","Katalog produk lengkap menyusul"],
  steps:["Sebutkan produk dan jumlahnya","Kami konfirmasi stok dan harga","Pesanan diproses dan dikirim"],
  f:[["Nama","text"],["Produk yang dipesan","area"],["Jumlah","text"],["Alamat","text"],["Catatan","area",1]]}};
+const IC={"ride": "<path d=\"M12 21s-6-5.5-6-10a6 6 0 0112 0c0 4.500-6 10-6 10z\"/><circle cx=\"12\" cy=\"11\" r=\"2\"/>", "assist": "<path d=\"M6 8h12l-1 12H7z\"/><path d=\"M9 8a3 3 0 016 0\"/>", "care": "<path d=\"M12 20s-7-4.500-7-10a4 4 0 017-2.500A4 4 0 0119 10c0 5.500-7 10-7 10z\"/>", "gift": "<path d=\"M4 10h16v10H4zM3 7h18v3H3zM12 7v13\"/><path d=\"M12 7c-3 0-4-4-1-4s1 4 1 4zM12 7c3 0 4-4 1-4s-1 4-1 4z\"/>", "store": "<path d=\"M4 9l1-5h14l1 5M4 9v11h16V9M10 20v-5h4v5\"/><path d=\"M4 9c0 2 3 2 4 0 1 2 3 2 4 0 1 2 3 2 4 0 1 2 4 2 4 0\"/>"};
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-const nav=[["index.html","Beranda"],["index.html#layanan","Layanan"],["index.html#cara","Cara pesan"],["index.html#kontak","Kontak"]];
-document.body.insertAdjacentHTML("afterbegin",`<header><div class="wrap"><a class="logo" href="index.html">AKHAWAT</a><button class="menu" aria-expanded="false" aria-controls="nv">Menu</button><nav id="nv">${nav.map(a=>`<a href="${a[0]}">${a[1]}</a>`).join("")}<a class="btn solid" href="${wa("Assalamu'alaikum Akhawat, saya ingin bertanya.")}">Hubungi kami</a></nav></div></header>`);
+const nav=[["index.html","Beranda"],["tentang.html","Tentang"],["visi-misi.html","Visi misi"],["index.html#layanan","Layanan"],["faq.html","FAQ"],["index.html#kontak","Kontak"]];
+document.body.insertAdjacentHTML("afterbegin",`<header><div class="wrap"><a class="logo" href="index.html"><img class="lg" src="logo.png" alt="" onerror="this.remove()">AKHAWAT</a><button class="menu" aria-expanded="false" aria-controls="nv">Menu</button><nav id="nv">${nav.map(a=>`<a href="${a[0]}">${a[1]}</a>`).join("")}</nav></div></header>`);
 document.body.insertAdjacentHTML("beforeend",`<a class="wa" href="${wa("Assalamu'alaikum Akhawat, saya ingin bertanya.")}"><i></i>Chat WhatsApp</a><footer><div class="wrap"><span>© 2026 Akhawat Purworejo</span><a href="${IG}">Instagram @akhawat.purworejo</a></div></footer>`);
 const mb=document.querySelector(".menu"),nv=document.getElementById("nv");
 mb.onclick=()=>{const o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
 const home=document.getElementById("svc-list");
-if(home)home.innerHTML=Object.entries(S).map(([k,v])=>`<a class="svc" href="layanan-${k}.html"><div class="mono">${v.m}</div><div><h3>${v.n}</h3><p>${v.s}</p><small>Lihat detail dan pesan</small></div></a>`).join("");
+if(home)home.innerHTML=Object.entries(S).map(([k,v])=>`<a class="ic" href="layanan-${k}.html"><span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg></span><b>${v.n.replace("Akhawat ","")}</b><small>${v.s}</small></a>`).join("");
+const T=[["Contoh testimoni: ganti dengan ulasan asli dari pelanggan Akhawat Ride.","Nama pelanggan","Akhawat Ride"],["Contoh testimoni: ganti dengan ulasan asli dari pelanggan Akhawat Assist.","Nama pelanggan","Akhawat Assist"],["Contoh testimoni: ganti dengan ulasan asli dari pelanggan Akhawat Gift.","Nama pelanggan","Akhawat Gift"]];
+const tl=document.getElementById("tt-list");
+if(tl)tl.innerHTML=T.map(t=>`<figure class="tt"><blockquote>${t[0]}</blockquote><figcaption>${t[1]}, ${t[2]}</figcaption></figure>`).join("");
 const id=document.body.dataset.service,v=S[id];
 if(v){
  document.title=v.n+" · Akhawat Purworejo";
