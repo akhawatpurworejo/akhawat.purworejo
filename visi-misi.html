@@ -43,7 +43,7 @@ if(tl)tl.innerHTML=T.map(t=>`<figure class="tt"><blockquote>${t[0]}</blockquote>
 const id=document.body.dataset.service,v=S[id];
 if(v){
  document.title=v.n+" · Akhawat Purworejo";
- document.getElementById("detail").innerHTML=`<div class="wrap"><a class="crumb" href="index.html#layanan">‹ Semua layanan</a><div style="margin-top:26px"><h1>${v.n}</h1><p style="margin-top:18px;font-size:1.1rem">${v.intro}</p><div class="row"><button class="btn solid" id="open">Pesan layanan ini</button></div></div></div>
+ document.getElementById("detail").innerHTML=`<div class="wrap"><a class="crumb" href="index.html#layanan">‹ Semua layanan</a><div style="margin-top:26px"><h1>${v.n}</h1><p style="margin-top:18px;font-size:1.1rem">${v.intro}</p><div class="row"><button class="btn solid" id="open">Pesan layanan ini</button>${id=="store"?'<a class="btn" href="store.html">Lihat katalog produk</a>':""}</div></div></div>
  <section><div class="wrap"><h2>Yang bisa kami bantu</h2><ul class="list">${v.items.map(i=>`<li>${i}</li>`).join("")}</ul></div></section>
  <section class="alt"><div class="wrap"><h2>Cara kerjanya</h2><ol class="steps">${v.steps.map(s=>`<li><b>${s}</b></li>`).join("")}</ol></div></section>
  <dialog id="dlg"><form id="fm" novalidate><div class="top"><div><h3>Pesan ${v.n}</h3><p class="note">Setelah kamu kirim, WhatsApp terbuka dengan pesan yang sudah tersusun.</p></div><button type="button" class="x" id="cl" aria-label="Tutup">×</button></div>
