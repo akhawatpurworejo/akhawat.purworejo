@@ -24,7 +24,7 @@ const set=(o,p,v)=>{const k=p.split('.'),l=k.pop();k.reduce((a,x)=>a[x]??={},o)[
 const sb=supabase.createClient(SB_URL,SB_KEY);
 let W=structuredClone(WD),T=[],user=null,tab='home';
 function wmerge(d,s){if(Array.isArray(d))return d.map((x,i)=>wmerge(x,s&&s[i]));if(d&&typeof d==='object'){const o={};for(const k in d)o[k]=((k==='fields'||k==='items')&&s&&Array.isArray(s[k]))?s[k]:wmerge(d[k],s&&s[k]);return o}return(s===undefined||s===null||s==='')?d:s}
-async function load(){try{const {data}=await sb.from('settings').select('value').eq('key','web').maybeSingle();W=wmerge(WD,data&&data.value||{})}catch(e){W=structuredClone(WD)}
+async function load(){try{const {data}=await sb.from('settings').select('value').eq('key','web').maybeSingle();W=wmerge(WD,data&&data.value&&data.value.v2||{})}catch(e){W=structuredClone(WD)}
  const r=await sb.from('site_testimonials').select('*').order('created_at',{ascending:false});T=r.data||[]}
 const wf=(p,l,o={})=>{let v=get(W,p)??'';if(Array.isArray(v))v=v.join('\n');return `<label>${l}${o.t?`<textarea data-w="${p}" rows="${o.r||3}">${esc(v)}</textarea>`:`<input data-w="${p}" value="${esc(v)}">`}</label>`};
 const wchk=(p,l)=>`<label style="display:flex;gap:10px;align-items:center"><input type="checkbox" data-w="${p}" ${get(W,p)?'checked':''}> ${l}</label>`;
@@ -39,7 +39,7 @@ function wclr(p){wsync();set(W,p,'');wre()}
 function rs(file,max){return new Promise(res=>{if(!/^image\/(jpe?g|png|webp)$/.test(file.type))return res(file);const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(u);res(b||file)},'image/jpeg',.85)};im.onerror=()=>{URL.revokeObjectURL(u);res(file)};im.src=u})}
 async function wup(el,p){const f=el.files[0];if(!f)return;wsync();const b=await rs(f,1400),isj=b!==f,n=Date.now()+'-'+f.name.replace(/[^\w]/g,'').slice(0,20)+(isj?'.jpg':'.'+(f.name.split('.').pop()||'img').replace(/[^\w]/g,''));
  const {error}=await sb.storage.from('media').upload(n,b,isj?{contentType:'image/jpeg'}:{});if(error)return alert(error.message);set(W,p,sb.storage.from('media').getPublicUrl(n).data.publicUrl);wre()}
-async function wsave(){wsync();const {error}=await sb.from('settings').upsert({key:'web',value:W});alert(error?error.message:'Tersimpan ✓ Buka situs lalu muat ulang halaman untuk melihat hasilnya.')}
+async function wsave(){wsync();const {error}=await sb.from('settings').upsert({key:'web',value:{v2:W}});alert(error?error.message:'Tersimpan ✓ Buka situs lalu muat ulang halaman untuk melihat hasilnya.')}
 // FAQ
 const qa=()=>{if(!W.faq)W.faq={};if(!Array.isArray(W.faq.items))W.faq.items=[];return W.faq.items};
 const qadd=()=>{wsync();qa().push({q:'Pertanyaan baru',a:''});wre()},qdel=j=>{wsync();qa().splice(j,1);wre()},qmv=(j,d)=>{wsync();const a=qa(),k=j+d;if(k<0||k>=a.length)return;[a[j],a[k]]=[a[k],a[j]];wre()};
