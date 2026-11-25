@@ -53,3 +53,13 @@ body #tab a.on{color:#4f3226}
  h1{font-size:clamp(1.9rem,7.5vw,2.6rem)}
  .hero p{margin-top:14px;font-size:1rem}.row{margin-top:20px}
 }
+
+/* ===== Revisi copywriting: elemen teks tambahan ===== */
+.sl{margin:14px 0 0;max-width:60ch}
+.quote .sl{margin-left:auto;margin-right:auto}
+.ctag{display:block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mocha);margin-bottom:4px}
+.ic b{font-size:1.25rem;line-height:1.2}
+.ic small{max-width:26ch}
+footer .fgrid p+p{margin-top:2px}
+.kcard .btn{margin-top:12px}
+.kform>p{margin:8px 0 4px}
