@@ -63,3 +63,5 @@ body #tab a.on{color:#4f3226}
 footer .fgrid p+p{margin-top:2px}
 .kcard .btn{margin-top:12px}
 .kform>p{margin:8px 0 4px}
+
+.disc img.dimg{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}

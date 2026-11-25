@@ -10,7 +10,7 @@ var PAKAI_TEKS_BAWAAN=true;
 if(PAKAI_TEKS_BAWAAN){var K={};['home','tentang','visi','lay','faq','kontak','testi','svc','global','design'].forEach(function(k){if(W[k])K[k]=W[k]});
  var G=K.global||{};K.global={wa:G.wa,wa_msg:G.wa_msg,ig:G.ig};if(K.home)K.home={hero_img:K.home.hero_img};
  ['home','tentang','visi','lay','faq','kontak','testi','svc'].forEach(function(k){if(k!=='home'&&k!=='global')delete K[k]});
- K.services=(W.services||[]).map(function(s){return{id:s.id,hidden:s.hidden,form:s.form}});W=K}
+ K.services=(W.services||[]).map(function(s){return{id:s.id,hidden:s.hidden,form:s.form,icon:s.icon}});W=K}
 function g(p){return p.split('.').reduce(function(a,k){return a==null?a:a[k]},W)}
 function ok(v){return v!=null&&String(v).trim()!==''}
 function lines(v){return(Array.isArray(v)?v:String(v||'').split('\n')).map(function(x){return String(x).trim()}).filter(Boolean)}
@@ -18,7 +18,7 @@ function wa(){var n=String(ok(g('global.wa'))?g('global.wa'):'6288228991877').re
 function ig(){var v=String(ok(g('global.ig'))?g('global.ig'):'akhawat.purworejo').trim();return /^https?:\/\//i.test(v)?v:'https://instagram.com/'+v.replace(/^@/,'').replace(/\/+$/,'')}
 function msg(){return ok(g('global.wa_msg'))?g('global.wa_msg'):DM}
 function S(){var o={},L=W.services||[];Object.keys(SD).forEach(function(id){var d=JSON.parse(JSON.stringify(SD[id])),s=L.filter(function(x){return x&&x.id===id})[0]||{};if(s.hidden)return;
- if(ok(s.name))d.n=s.name;if(ok(s.short))d.s=s.short;if(ok(s.intro))d.intro=s.intro;if(ok(s.tagline))d.tg=s.tagline;if(ok(s.btn_order))d.bo=s.btn_order;if(ok(s.btn_detail))d.bd=s.btn_detail;
+ if(ok(s.name))d.n=s.name;if(ok(s.short))d.s=s.short;if(ok(s.intro))d.intro=s.intro;if(ok(s.icon))d.ic=s.icon;if(ok(s.tagline))d.tg=s.tagline;if(ok(s.btn_order))d.bo=s.btn_order;if(ok(s.btn_detail))d.bd=s.btn_detail;
  var it=lines(s.items);if(it.length)d.items=it;var st=lines(s.steps);if(st.length)d.steps=st;
  var f=s.form||{};if(ok(f.msg_head))d.mh=f.msg_head;
  if(Array.isArray(f.fields)&&f.fields.length)d.f=f.fields.filter(function(x){return ok(x.label)}).map(function(x){return[x.label,x.type==='textarea'?'area':(x.type||'text'),x.req?0:1,lines(String(x.opts||'').replace(/,/g,'\n'))]});
@@ -63,7 +63,7 @@ document.body.insertAdjacentHTML("beforeend",`<a class="wa" href="${wa(AKW.msg()
 const mb=document.querySelector(".menu"),nv=document.getElementById("nv");
 mb.onclick=()=>{const o=nv.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
 const home=document.getElementById("svc-list");
-if(home)home.innerHTML=Object.entries(S).map(([k,v])=>`<a class="ic" href="layanan-${k}.html"><span class="disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg></span><b>${v.n}</b><small>${v.s}</small></a>`).join("");
+if(home)home.innerHTML=Object.entries(S).map(([k,v])=>`<a class="ic" href="layanan-${k}.html"><span class="disc">${v.ic?`<img class="dimg" alt="" src="${v.ic}">`:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`}</span><b>${v.n}</b><small>${v.s}</small></a>`).join("");
 const id=document.body.dataset.service,v=S[id];
 if(v){
  document.title=v.n+" · Akhawat Purworejo";
@@ -89,6 +89,6 @@ if(kf)kf.onsubmit=e=>{e.preventDefault();const n=kf.n.value.trim(),p=kf.p.value.
  window.open(wa(`Assalamu'alaikum Akhawat, saya ${n}.\n\n${p}`),"_blank");kf.reset()};
 
 const sc=document.getElementById("svc-cards");
-if(sc)sc.innerHTML=Object.entries(S).map(([k,v])=>`<article class="scard"><div class="sc-top"><span class="disc sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg></span><div>${v.tg?`<span class="ctag">${v.tg}</span>`:""}<h3>${v.n}</h3></div></div><p>${v.intro}</p><ul class="list">${v.items.map(i=>`<li>${i}</li>`).join("")}</ul><div class="row"><a class="btn solid" href="layanan-${k}.html?pesan=1">${v.bo||"Pesan"}</a><a class="btn" href="${k=="store"?"store.html":"layanan-"+k+".html"}">${v.bd||"Lihat detail"}</a></div></article>`).join("");
+if(sc)sc.innerHTML=Object.entries(S).map(([k,v])=>`<article class="scard"><div class="sc-top"><span class="disc sm">${v.ic?`<img class="dimg" alt="" src="${v.ic}">`:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`}</span><div>${v.tg?`<span class="ctag">${v.tg}</span>`:""}<h3>${v.n}</h3></div></div><p>${v.intro}</p><ul class="list">${v.items.map(i=>`<li>${i}</li>`).join("")}</ul><div class="row"><a class="btn solid" href="layanan-${k}.html?pesan=1">${v.bo||"Pesan"}</a><a class="btn" href="${k=="store"?"store.html":"layanan-"+k+".html"}">${v.bd||"Lihat detail"}</a></div></article>`).join("");
 
 </script><script src="tema.js" defer></script></body></html>
