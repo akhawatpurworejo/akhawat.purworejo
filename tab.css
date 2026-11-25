@@ -1,0 +1,6 @@
+#tab{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid #e6d3be;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));justify-content:space-around;font-family:Quicksand,system-ui,sans-serif}
+#tab a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-weight:700;font-size:.72rem;color:#7a6558;min-height:50px;justify-content:center}
+#tab a span{display:flex;align-items:center;justify-content:center;height:30px;padding:0 18px;border-radius:999px}
+#tab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#tab a.on{color:#4a2e20}#tab a.on span{background:#f3e6d6}
+@media(max-width:760px){#tab{display:flex}body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}.wa{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}}
