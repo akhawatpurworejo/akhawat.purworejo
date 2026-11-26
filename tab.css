@@ -4,3 +4,6 @@
 #tab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 #tab a.on{color:#4a2e20}#tab a.on span{background:#f3e6d6}
 @media(max-width:760px){#tab{display:flex}body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}.wa{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}}
+
+/* Kutipan di halaman Tentang: 2-3 baris, tetap rapi di HP */
+.quote.qlong h2{max-width:min(100%,21em);font-size:clamp(1.25rem,5.4vw,1.7rem);line-height:1.4;text-wrap:balance}

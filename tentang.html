@@ -6,7 +6,7 @@ var SD={"ride": {"n": "Akhawat Ride", "m": "R", "s": "Layanan antar-jemput untuk
 var W={};try{W=(JSON.parse(localStorage.getItem(CK)||'{}')||{}).v2||{}}catch(e){}
 /* PAKAI_TEKS_BAWAAN: true = teks di halaman memakai teks dari file HTML, teks lama tersimpan di admin diabaikan.
    Nomor WA, Instagram, desain, foto, dan kolom formulir pesan tetap dibaca dari admin. Ubah ke false untuk kembali ke teks dari admin. */
-var PAKAI_TEKS_BAWAAN=true;
+var PAKAI_TEKS_BAWAAN=false;
 if(PAKAI_TEKS_BAWAAN){var K={};['home','tentang','visi','lay','faq','kontak','testi','svc','global','design'].forEach(function(k){if(W[k])K[k]=W[k]});
  var G=K.global||{};K.global={wa:G.wa,wa_msg:G.wa_msg,ig:G.ig};if(K.home)K.home={hero_img:K.home.hero_img};
  ['home','tentang','visi','lay','faq','kontak','testi','svc'].forEach(function(k){if(k!=='home'&&k!=='global')delete K[k]});
@@ -49,11 +49,11 @@ fetch(SB+'/rest/v1/settings?key=eq.web&select=value',{headers:{apikey:KEY,Author
  if(n===o)return;try{localStorage.setItem(CK,n)}catch(e){return}
  var t=+sessionStorage.getItem('akw_rl')||0;if(Date.now()-t>15000){sessionStorage.setItem('akw_rl',Date.now());location.reload()}}).catch(function(){});
 })();
-</script><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"><link href="tema.css" rel="stylesheet"><link href="tab.css" rel="stylesheet"></head><body><header><div class="wrap"><a class="logo" href="index.html"><img alt="" class="lg" onerror="this.remove()" src="logo.png"/>AKHAWAT</a><button aria-controls="nv" aria-expanded="false" class="menu">Menu</button><nav id="nv"><a href="index.html">Beranda</a><a aria-current="page" href="tentang.html">Tentang</a><a href="visi-misi.html">Visi misi</a><a href="layanan.html">Layanan</a><a href="faq.html">FAQ</a><a href="kontak.html">Kontak</a></nav></div></header><main><div class="topbg"><div class="wrap"><div class="hero"><div><h1 data-k="tentang.title">Mengenal Akhawat</h1><p data-k="tentang.lead">Berawal dari keinginan sederhana untuk saling membantu dan memudahkan urusan sehari-hari.</p><p class="tag" data-k="tentang.tag">Personal Service, Thoughtful Care</p><p class="five" data-k="tentang.five">Ride · Assist · Care · Gift · Store</p></div>
+</script><link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"><link href="tema.css" rel="stylesheet"><link href="tab.css" rel="stylesheet"></head><body><header><div class="wrap"><a class="logo" href="index.html"><img alt="" class="lg" onerror="this.remove()" src="logo.png"/>AKHAWAT</a><button aria-controls="nv" aria-expanded="false" class="menu">Menu</button><nav id="nv"><a href="index.html">Beranda</a><a aria-current="page" href="tentang.html">Tentang</a><a href="visi-misi.html">Visi misi</a><a href="layanan.html">Layanan</a><a href="faq.html">FAQ</a><a href="kontak.html">Kontak</a></nav></div></header><main><div class="topbg"><div class="wrap"><div class="hero"><div><h1 data-k="tentang.title">Mengenal Akhawat</h1><p data-k="tentang.lead">Berawal dari keinginan sederhana untuk saling membantu dan memudahkan urusan sehari-hari.</p><p class="tag" data-show="tag" data-k="tentang.tag">Personal Service, Thoughtful Care</p><p class="five" data-show="five" data-k="tentang.five">Ride · Assist · Care · Gift · Store</p></div>
 <div class="logobox"><img alt="Logo Akhawat" onerror="this.replaceWith('AKHAWAT')" src="logo.png"/></div></div></div></div>
 <section class="alt"><div class="wrap prose"><h2 data-k="tentang.w_title">Hadir untuk membantu sesama.</h2><p data-k="tentang.w_text">Akhawat merupakan layanan berbasis di Purworejo yang hadir untuk membantu kebutuhan muslimah dan keluarga.<br/><br/>Kami menyediakan berbagai layanan, mulai dari antar-jemput, bantuan titip belanja dan pengantaran barang, perhatian untuk orang tersayang, hingga penyediaan perlengkapan muslimah.<br/><br/>Kami percaya, bantuan sederhana bisa membuat urusan seseorang terasa lebih ringan.</p></div></section>
-<section><div class="wrap"><h2 data-k="tentang.val_title">Yang menjadi perhatian kami.</h2><div class="vals"><div><h3 data-k="tentang.v1_title">Amanah</h3><p data-k="tentang.v1_text">Menjaga kepercayaan pelanggan dengan menjalankan setiap pesanan secara bertanggung jawab.</p></div><div><h3 data-k="tentang.v2_title">Kenyamanan</h3><p data-k="tentang.v2_text">Mengutamakan komunikasi yang baik, pelayanan yang sopan, dan menjaga privasi pelanggan.</p></div><div><h3 data-k="tentang.v3_title">Kepedulian</h3><p data-k="tentang.v3_text">Mendengarkan kebutuhan pelanggan dan berusaha membantu dengan sebaik mungkin.</p></div></div></div></section>
-<section class="alt quote"><div class="wrap"><h2 data-k="tentang.quote">Semoga kehadiran Akhawat bisa menjadi salah satu jalan untuk saling memudahkan dan memberi manfaat bagi sekitar.</h2></div></section>
+<section data-show="val"><div class="wrap"><h2 data-k="tentang.val_title">Yang menjadi perhatian kami.</h2><div class="vals"><div><h3 data-k="tentang.v1_title">Amanah</h3><p data-k="tentang.v1_text">Menjaga kepercayaan pelanggan dengan menjalankan setiap pesanan secara bertanggung jawab.</p></div><div><h3 data-k="tentang.v2_title">Kenyamanan</h3><p data-k="tentang.v2_text">Mengutamakan komunikasi yang baik, pelayanan yang sopan, dan menjaga privasi pelanggan.</p></div><div><h3 data-k="tentang.v3_title">Kepedulian</h3><p data-k="tentang.v3_text">Mendengarkan kebutuhan pelanggan dan berusaha membantu dengan sebaik mungkin.</p></div></div></div></section>
+<section class="alt quote qlong" data-show="quote"><div class="wrap"><h2 data-k="tentang.quote">Semoga kehadiran Akhawat bisa menjadi salah satu jalan untuk saling memudahkan dan memberi manfaat bagi sekitar.</h2></div></section>
 </main><script>
 const WA=AKW.wa(),IG=AKW.ig();
 const S=AKW.S();
@@ -91,4 +91,20 @@ if(kf)kf.onsubmit=e=>{e.preventDefault();const n=kf.n.value.trim(),p=kf.p.value.
 const sc=document.getElementById("svc-cards");
 if(sc)sc.innerHTML=Object.entries(S).map(([k,v])=>`<article class="scard"><div class="sc-top"><span class="disc sm">${v.ic?`<img class="dimg" alt="" src="${v.ic}">`:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`}</span><div>${v.tg?`<span class="ctag">${v.tg}</span>`:""}<h3>${v.n}</h3></div></div><p>${v.intro}</p><ul class="list">${v.items.map(i=>`<li>${i}</li>`).join("")}</ul><div class="row"><a class="btn solid" href="layanan-${k}.html?pesan=1">${v.bo||"Pesan"}</a><a class="btn" href="${k=="store"?"store.html":"layanan-"+k+".html"}">${v.bd||"Lihat detail"}</a></div></article>`).join("");
 
+</script><script>
+/* Halaman Tentang: tampilkan/sembunyikan bagian dan poin "Yang menjadi perhatian kami" dari admin. */
+(function(){
+ var T=function(k){return AKW.get('tentang.'+k)};
+ function off(n){document.querySelectorAll('[data-show="'+n+'"]').forEach(function(e){e.style.display='none'})}
+ if(T('show_tag')!==true)off('tag');
+ if(T('show_five')!==true)off('five');
+ if(T('show_quote')===false)off('quote');
+ var v=T('values'),box=document.querySelector('.vals'),n=0;
+ if(Array.isArray(v)&&box){box.innerHTML='';
+  v.forEach(function(x){if(!x||x.hidden||!String(x.title||'').trim())return;
+   var d=document.createElement('div'),h=document.createElement('h3'),p=document.createElement('p');
+   h.textContent=x.title;p.textContent=x.text||'';d.appendChild(h);d.appendChild(p);box.appendChild(d);n++});
+  if(!n)off('val')}
+ if(T('show_val')===false)off('val');
+})();
 </script><script src="tema.js" defer></script></body></html>

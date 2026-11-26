@@ -13,8 +13,6 @@
    n.innerHTML=P.map(function(p){return '<a href="'+p[0]+'"'+(p[0]===cur?' class="on" aria-current="page"':'')+'><span><svg viewBox="0 0 24 24" aria-hidden="true">'+p[2]+'</svg></span>'+p[1]+'</a>'}).join('');
    document.body.appendChild(n);
   }
-  var h=document.querySelector('.topbg .hero>div');
-  if(h&&!document.querySelector('.girl')){var g=document.createElement('div');g.className='girl';g.innerHTML=girl('#c98a82','#6f4a3a');h.insertBefore(g,h.firstChild);}
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
