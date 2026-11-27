@@ -15,7 +15,7 @@ body.sp .btn.solid{display:inline-flex;align-items:center;justify-content:center
 .sp-white::before{content:"";position:absolute;inset:0;background:var(--pd);opacity:.09;pointer-events:none}
 
 /* A. Hero (cokelat tua) */
-.sp-hero{padding:20px 0 84px;border-radius:0 0 50% 50% / 0 0 72px 72px;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
+.sp-hero{padding:20px 0 84px;border-radius:0;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
 .sp-hero-in{display:grid;gap:10px}
 .sp-hero .crumb{display:block;width:fit-content;margin-bottom:18px;color:var(--sp-tan)}
 .sp-pill{display:flex;width:fit-content;align-items:center;gap:8px;background:rgba(255,255,255,.13);color:#f6e7d3;border-radius:999px;padding:7px 16px 7px 10px;font:600 1rem 'Cormorant Garamond',Georgia,serif;margin-bottom:14px}

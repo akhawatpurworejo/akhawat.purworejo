@@ -21,10 +21,10 @@ body #tab a.on span{background:#ecd8c3}
 .topbg .btn:not(.solid),.phead .btn:not(.solid){border-color:#e6cdb2}
 
 /* ===== Keterpaduan antar-blok (semua halaman) ===== */
-:root{--blk:clamp(8px,2vw,16px);--sec:clamp(26px,5vw,40px);--ovl:26px}
+:root{--blk:clamp(8px,2vw,16px);--sec:clamp(26px,5vw,40px);--ovl:0px}
 body{background-color:#fbf3e9}
 section{padding:var(--sec) 0;position:relative}
-.topbg,.phead{border-radius:0 0 50% 50% / 0 0 72px 72px;padding-bottom:84px}
+.topbg,.phead{border-radius:0;padding-bottom:84px}
 .alt{margin:var(--blk) 12px;border-radius:32px;overflow:hidden}
 .alt>.wrap{position:relative;z-index:1}
 .alt::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.4;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/96px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/96px no-repeat;}
@@ -33,3 +33,7 @@ main>section:not(.alt):not(.sp-hero):not(.sp-white):not(.sp-dark):not(.sp-cta)::
 .topbg+section,.phead+section,.sp-hero+section{margin-top:calc(var(--ovl) * -1);padding-top:calc(var(--sec) + var(--ovl));position:relative;z-index:3}
 .topbg+section::after,.phead+section::after,.sp-hero+section::after{content:none!important}
 footer{border-radius:36px 36px 0 0;margin-top:var(--blk)}
+
+/* Tepi bawah hero bergelombang (S-curve lembut) */
+.topbg,.phead,.sp-hero{--wh:56px;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - var(--wh) + 1px) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1300 38 1140 20 920 14C700 8 560 50 380 66C240 78 120 62 0 40Z'/%3E%3C/svg%3E") bottom/100% var(--wh) no-repeat;mask:linear-gradient(#000,#000) top/100% calc(100% - var(--wh) + 1px) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1300 38 1140 20 920 14C700 8 560 50 380 66C240 78 120 62 0 40Z'/%3E%3C/svg%3E") bottom/100% var(--wh) no-repeat}
+@media(min-width:700px){.topbg,.phead,.sp-hero{--wh:84px}}
