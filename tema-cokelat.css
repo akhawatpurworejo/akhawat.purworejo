@@ -24,7 +24,7 @@ body #tab a.on span{background:#ecd8c3}
 :root{--blk:clamp(8px,2vw,16px);--sec:clamp(26px,5vw,40px);--ovl:26px}
 body{background-color:#fbf3e9}
 section{padding:var(--sec) 0;position:relative}
-.topbg,.phead{border-radius:0 0 44px 44px;padding-bottom:26px}
+.topbg,.phead{border-radius:0 0 50% 50% / 0 0 72px 72px;padding-bottom:84px}
 .alt{margin:var(--blk) 12px;border-radius:32px;overflow:hidden}
 .alt>.wrap{position:relative;z-index:1}
 .alt::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.4;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/96px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/96px no-repeat;}

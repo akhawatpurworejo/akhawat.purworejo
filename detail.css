@@ -15,7 +15,7 @@ body.sp .btn.solid{display:inline-flex;align-items:center;justify-content:center
 .sp-white::before{content:"";position:absolute;inset:0;background:var(--pd);opacity:.09;pointer-events:none}
 
 /* A. Hero (cokelat tua) */
-.sp-hero{padding:20px 0 26px;border-radius:0 0 44px 44px;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
+.sp-hero{padding:20px 0 84px;border-radius:0 0 50% 50% / 0 0 72px 72px;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
 .sp-hero-in{display:grid;gap:10px}
 .sp-hero .crumb{display:block;width:fit-content;margin-bottom:18px;color:var(--sp-tan)}
 .sp-pill{display:flex;width:fit-content;align-items:center;gap:8px;background:rgba(255,255,255,.13);color:#f6e7d3;border-radius:999px;padding:7px 16px 7px 10px;font:600 1rem 'Cormorant Garamond',Georgia,serif;margin-bottom:14px}
@@ -146,3 +146,20 @@ body.sp .sp-white,body.sp .sp-dark{margin-top:var(--blk)}
 .sp-white::after,.sp-dark::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/100px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/100px no-repeat;opacity:.4}
 .sp-dark::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23E6CDB2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/100px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23E6CDB2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/100px no-repeat;opacity:.35}
 body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
+
+/* v3: gambar hero berbingkai lingkaran, blok CTA timbul */
+.sp-art{width:min(80vw,330px);aspect-ratio:1;padding:0;margin-top:22px;display:grid;place-items:center;justify-self:center}
+.sp-art::before{inset:0;left:0;right:0;border-radius:50%;background:radial-gradient(circle at 50% 35%,#fbefdf,#ecd6bd);box-shadow:0 0 0 10px rgba(255,255,255,.07)}
+.sp-art img{width:84%;height:auto;max-height:90%;object-fit:contain;margin:0;align-self:end;mix-blend-mode:normal}
+.sp-art:has(img[src*="duo"]){overflow:hidden;border-radius:50%;background:#f1e1cc;box-shadow:0 0 0 10px rgba(255,255,255,.07)}
+.sp-art:has(img[src*="duo"])::before{display:none}
+.sp-art:has(img[src*="duo"]) img{width:100%;height:100%;max-height:none;object-fit:cover;align-self:auto}
+@media(min-width:860px){.sp-art{width:min(100%,400px);margin:0;justify-self:end}}
+.sp-artwrap{position:relative;justify-self:center;margin-top:22px}
+.sp-artwrap .sp-art{margin:0}
+.sp-artwrap .sp-spark{right:2%;top:2%}
+.sp-artwrap .hnote{margin:14px 0 0}
+@media(min-width:860px){.sp-artwrap{justify-self:end;margin:0}}
+@media(min-width:1180px){.sp-artwrap .hnote{position:absolute;top:6px;right:-125px;max-width:150px;margin:0;text-align:left;transform:rotate(-7deg)}}
+.sp-box{box-shadow:0 18px 36px rgba(79,50,38,.22),0 3px 0 rgba(255,255,255,.7) inset;border:1px solid #e7cfb6}
+.sp-cta{margin-top:-14px}
