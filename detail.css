@@ -163,3 +163,5 @@ body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
 @media(min-width:1180px){.sp-artwrap .hnote{position:absolute;top:6px;right:-125px;max-width:150px;margin:0;text-align:left;transform:rotate(-7deg)}}
 .sp-box{box-shadow:0 18px 36px rgba(79,50,38,.22),0 3px 0 rgba(255,255,255,.7) inset;border:1px solid #e7cfb6}
 .sp-cta{margin-top:-14px}
+
+.hnote,.sp-artwrap .hnote{color:var(--sp-tan)!important}

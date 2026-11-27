@@ -37,3 +37,13 @@ footer{border-radius:36px 36px 0 0;margin-top:var(--blk)}
 /* Tepi bawah hero bergelombang (S-curve lembut) */
 .topbg,.phead,.sp-hero{--wh:56px;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - var(--wh) + 1px) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1300 38 1140 20 920 14C700 8 560 50 380 66C240 78 120 62 0 40Z'/%3E%3C/svg%3E") bottom/100% var(--wh) no-repeat;mask:linear-gradient(#000,#000) top/100% calc(100% - var(--wh) + 1px) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V28C1300 38 1140 20 920 14C700 8 560 50 380 66C240 78 120 62 0 40Z'/%3E%3C/svg%3E") bottom/100% var(--wh) no-repeat}
 @media(min-width:700px){.topbg,.phead,.sp-hero{--wh:84px}}
+
+/* Sambungan hero ke panel pertama + napas kiri-kanan */
+:root{--wh:56px}
+@media(min-width:700px){:root{--wh:84px}}
+.topbg,.phead,.sp-hero{position:relative;z-index:1}
+.topbg+.alt,.phead+.alt,.sp-hero+.alt{margin:calc(var(--wh) * -1) 0 var(--blk);max-width:none;border-radius:0 0 32px 32px;padding-top:calc(var(--sec) + var(--wh));z-index:0}
+.topbg+.alt::after,.phead+.alt::after,.sp-hero+.alt::after{content:"";display:block}
+.wrap{padding-left:28px;padding-right:28px}
+.alt>.wrap{padding-left:26px;padding-right:26px}
+header .wrap{padding-left:22px;padding-right:22px}
