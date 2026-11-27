@@ -1,5 +1,5 @@
 /* Detail layanan (Ride, Assist, Care, Gift): satu sistem desain, hanya aktif di body.sp */
-body.sp{--sp-acc:#8d6350;--sp-tint:#f1e4d3;--sp-gap:clamp(56px,9vw,96px)}
+body.sp{--sp-acc:#8d6350;--sp-tint:#f1e4d3;--sp-gap:clamp(44px,7vw,72px)}
 body.sp section{padding:var(--sp-gap) 0}
 body.sp h2{display:block;background:none;padding:0;border-radius:0;font-size:clamp(1.5rem,5vw,2rem);line-height:1.25}
 body.sp h2::before{content:none}
@@ -68,8 +68,34 @@ body.sp .btn.solid{display:inline-flex;align-items:center;gap:10px}
 }
 
 /* E. CTA */
-.sp-cta{padding-top:0;margin-top:-32px}
+.sp-cta{padding-top:0;margin-top:-20px}
 .sp-box{background:var(--alt);border-radius:28px;padding:clamp(32px,6vw,48px);display:grid;gap:22px;text-align:center;justify-items:center}
 .sp-box h2{font-style:italic;font-weight:500}
 .sp-box p{margin:12px auto 0;max-width:44ch}
 @media(min-width:860px){.sp-box{grid-template-columns:1fr auto;text-align:left;justify-items:start;gap:40px;align-items:center}.sp-box p{margin-left:0}}
+
+/* Kehangatan tambahan */
+.sp-head{margin-bottom:34px}
+.sp-head h2{display:flex!important;align-items:center;justify-content:center;gap:18px}
+body.sp .sp-head h2::before,body.sp .sp-head h2::after{content:"";flex:0 1 72px;height:1px;background:var(--line)!important;display:block!important}
+.sp-head p{margin:10px auto 0;max-width:44ch}
+.sp-hero{background:linear-gradient(180deg,#f1e2d0,var(--bg))}
+.sp-hero .lead{font-size:1.1rem}
+.sp-art{width:min(74vw,290px)}
+.sp-art::before{background:rgba(141,99,80,.16)}
+@media(min-width:860px){.sp-art{width:min(100%,400px)}.sp-art img{max-height:430px}.sp-hero-in{gap:48px}.sp-hero{padding-bottom:84px}}
+.sp-card{background:#fff;box-shadow:0 4px 16px rgba(79,50,38,.06)}
+.sp-card .ico{background:#f1e4d3}
+.sp-why .ico{width:52px;height:52px}.sp-why{grid-template-columns:1fr}
+.sp-why>div{grid-template-columns:52px 1fr}
+.sp-ic{width:76px;height:76px;background:#fff;border:1.5px solid #e2cdb6}.sp-ic svg{width:32px;height:32px}
+@media(min-width:600px){.sp-why{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){
+ .sp-steps{position:relative}
+ .sp-steps::before{content:"";position:absolute;left:12.5%;right:12.5%;top:38px;border-top:1.5px dashed #d9c3aa}
+ .sp-steps li{position:relative}
+}
+@media(min-width:1000px){.sp-why{grid-template-columns:repeat(4,1fr)}.sp-why>div{grid-template-columns:1fr}}
+.sp-box{background:linear-gradient(135deg,#f1e2d0,#f7ede0);border:1px solid var(--line)}
+.sp-cta-img{display:none}
+@media(min-width:860px){.sp-box:has(.sp-cta-img){grid-template-columns:130px 1fr auto}.sp-cta-img{display:block;width:130px;height:130px;object-fit:contain}}
