@@ -20,8 +20,8 @@ body.sp .btn.solid{display:inline-flex;align-items:center;justify-content:center
 .sp-hero .crumb{display:block;width:fit-content;margin-bottom:18px;color:var(--sp-tan)}
 .sp-pill{display:flex;width:fit-content;align-items:center;gap:8px;background:rgba(255,255,255,.13);color:#f6e7d3;border-radius:999px;padding:7px 16px 7px 10px;font:600 1rem 'Cormorant Garamond',Georgia,serif;margin-bottom:14px}
 .sp-pill svg{width:20px;height:20px}
-.sp-hero h1{font-size:clamp(2.6rem,12vw,3.9rem);line-height:1.08;position:relative;width:fit-content;color:#fff8ef}
-.sp-heart{position:absolute;right:-34px;top:-4px;width:28px;height:28px;color:var(--sp-tan);transform:rotate(12deg)}
+.sp-hero h1{font-size:clamp(2.6rem,12vw,3.9rem);line-height:1.08;position:relative;width:fit-content;max-width:100%;padding-right:36px;color:#fff8ef}
+.sp-heart{position:absolute;right:0;top:-4px;width:28px;height:28px;color:var(--sp-tan);transform:rotate(12deg)}
 .sp-ital{font:italic 500 clamp(1.4rem,5.6vw,1.9rem)/1.3 'Cormorant Garamond',Georgia,serif;color:var(--sp-tan);margin:12px 0 0}
 .sp-hero .lead{margin-top:14px;font-size:1.06rem;max-width:44ch;color:rgba(251,243,233,.88)}
 .sp-hero .row{margin-top:24px}
@@ -85,3 +85,34 @@ body.sp .sp-hero .btn.solid{background:#f6e7d3;background-image:none;color:var(-
 .sp-curve{width:150px;height:46px;color:var(--sp-acc);opacity:.75}
 @media(min-width:860px){.sp-box{grid-template-columns:150px 1fr auto;text-align:left;justify-items:start;gap:36px;align-items:center;padding:40px 48px}.sp-box p{margin-left:0}}
 .sp-wave,.sp-spark,.sp-heart,.sp-curve{pointer-events:none}
+
+/* Kontak & Testimoni */
+.kc3{display:grid;gap:14px;grid-template-columns:1fr;max-width:1000px;margin:0 auto}
+.kc{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 8px 20px rgba(79,50,38,.08)}
+.kc .ico{width:60px;height:60px;border-radius:50%;background:var(--sp-tint);color:#6b4a3a;display:grid;place-items:center}
+.kc svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.kc .l{color:var(--mocha);font-weight:700;font-size:.95rem}
+.kc strong{display:block;font:600 1.2rem/1.3 'Playfair Display',Georgia,serif;margin:2px 0 10px;overflow-wrap:anywhere}
+.kc .btn{padding:10px 18px;font-size:.95rem}
+@media(min-width:900px){.kc3{grid-template-columns:repeat(3,1fr)}.kc{grid-template-columns:1fr;justify-items:center;text-align:center;padding:30px 20px}}
+.kbox{display:grid;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 8px 24px rgba(79,50,38,.08);overflow:hidden;max-width:1000px;margin:0 auto}
+.kfm{padding:28px 22px}
+body.sp .kfm h2,body.sp .tform h2{justify-content:flex-start;text-align:left;font-size:1.6rem}
+body.sp .kfm h2::before,body.sp .kfm h2::after,body.sp .tform h2::before,body.sp .tform h2::after{content:none}
+.kfm form{display:grid;gap:14px;margin-top:16px;padding:0}
+.kfm label{display:grid;gap:6px;font-weight:600}.kfm label span{font-weight:400;color:var(--mut)}
+.kside{display:none}
+@media(min-width:860px){
+ .kbox{grid-template-columns:1.15fr .85fr}.kfm{padding:40px}
+ .kside{display:grid;align-content:center;justify-items:center;gap:18px;padding:30px;background:linear-gradient(180deg,#5f3d2f,#4a2f24);position:relative;overflow:hidden;text-align:center}
+ .kside::before{content:"";position:absolute;inset:0;background:var(--pl);background-size:120px;opacity:.13}
+ .kside>*{position:relative}.kside .sp-ital{color:#e6cdb2;margin:0}.kside img{width:150px;height:auto}
+}
+.tts{grid-template-columns:1fr;gap:16px;margin:0 auto;max-width:1000px}
+@media(min-width:800px){.tts{grid-template-columns:1fr 1fr}}
+.tt.tc{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start;padding:22px}
+.av{width:60px;height:60px;border-radius:50%;background:var(--sp-tint);color:#6b4a3a;display:grid;place-items:center;font:600 1.5rem 'Playfair Display',Georgia,serif}
+.th{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.th b{font:600 1.1rem 'Playfair Display',Georgia,serif}
+.tpill{background:rgba(141,99,80,.13);color:var(--sp-acc);border-radius:999px;padding:2px 12px;font-size:.82rem;font-weight:700}
+.tt.tc .stars{margin:6px 0 4px}
+.tt.tc blockquote{font:400 1rem/1.55 Quicksand,'DM Sans',sans-serif;font-style:normal;margin:0}
