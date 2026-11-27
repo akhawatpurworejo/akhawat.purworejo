@@ -116,3 +116,23 @@ body.sp .kfm h2::before,body.sp .kfm h2::after,body.sp .tform h2::before,body.sp
 .tpill{background:rgba(141,99,80,.13);color:var(--sp-acc);border-radius:999px;padding:2px 12px;font-size:.82rem;font-weight:700}
 .tt.tc .stars{margin:6px 0 4px}
 .tt.tc blockquote{font:400 1rem/1.55 Quicksand,'DM Sans',sans-serif;font-style:normal;margin:0}
+
+/* Beranda */
+.sp-hero.curve{border-radius:0 0 44px 44px}
+.sp-hero h1 em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;color:var(--sp-tan);text-decoration:underline;text-decoration-color:rgba(230,205,178,.55);text-decoration-thickness:2px;text-underline-offset:10px}
+body.sp .sp-hero .btn:not(.solid){background:transparent;border-color:#e6cdb2;color:#fbf3e9;box-shadow:none}
+.sp-hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.hnote{display:block;text-align:center;margin:12px 0 0;font-size:1.25rem;position:relative;z-index:2}
+@media(min-width:1180px){.hnote{position:absolute;top:6px;right:-125px;max-width:150px;margin:0;text-align:left;transform:rotate(-7deg)}}
+.hsv{display:flex!important;flex-wrap:wrap;justify-content:center;gap:14px;max-width:1180px;margin:0 auto}
+.hsv .ic{flex:0 0 calc(50% - 7px);display:grid;justify-items:center;align-content:start;text-align:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px 12px 18px;box-shadow:0 8px 20px rgba(79,50,38,.08);text-decoration:none;color:var(--cream);grid-column:auto!important}
+.hsv .ic b{font-size:1.1rem}.hsv .ic small{font-size:.88rem;line-height:1.45;color:var(--mut)}
+.hsv .disc{width:76px;height:76px}.hsv .more{color:var(--sp-acc);font-weight:700;font-size:.9rem;margin-top:2px}
+@media(min-width:700px){.hsv .ic{flex-basis:calc(33.333% - 10px)}}
+@media(min-width:1100px){.hsv .ic{flex-basis:calc(20% - 12px)}}
+.sp-center{justify-content:center;margin-top:26px}
+.cimg{display:none}
+@media(min-width:860px){.cimg{display:block;width:130px;height:auto}}
+.sp-hero .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+body.sp .sp-box h2{display:block;text-align:inherit}
+body.sp .sp-box h2::before,body.sp .sp-box h2::after{content:none}
