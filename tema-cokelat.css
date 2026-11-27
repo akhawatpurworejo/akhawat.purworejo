@@ -44,6 +44,7 @@ footer{border-radius:36px 36px 0 0;margin-top:var(--blk)}
 .topbg,.phead,.sp-hero{position:relative;z-index:1}
 .topbg+.alt,.phead+.alt,.sp-hero+.alt{margin:calc(var(--wh) * -1) 0 var(--blk);max-width:none;border-radius:0 0 32px 32px;padding-top:calc(var(--sec) + var(--wh));z-index:0}
 .topbg+.alt::after,.phead+.alt::after,.sp-hero+.alt::after{content:"";display:block}
-.wrap{padding-left:28px;padding-right:28px}
-.alt>.wrap{padding-left:26px;padding-right:26px}
+.wrap{padding-left:36px;padding-right:36px}
+.alt>.wrap{padding-left:34px;padding-right:34px}
+.alt{margin-left:16px;margin-right:16px}
 header .wrap{padding-left:22px;padding-right:22px}

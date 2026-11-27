@@ -140,7 +140,7 @@ body.sp .sp-box h2::before,body.sp .sp-box h2::after{content:none}
 .sp-art img{mix-blend-mode:multiply}
 .hnote{color:#6b4a3a}
 @media(min-width:1180px){.hnote{color:var(--sp-tan)}}
-body.sp .sp-hero+section{padding-top:calc(var(--sp-gap) + var(--ovl))}
+body.sp .sp-hero+section:not(.alt){padding-top:calc(var(--sp-gap) + var(--ovl))}
 body.sp .sp-white,body.sp .sp-dark{margin-top:var(--blk)}
 
 .sp-white::after,.sp-dark::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/100px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/100px no-repeat;opacity:.4}
@@ -165,3 +165,11 @@ body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
 .sp-cta{margin-top:-14px}
 
 .hnote,.sp-artwrap .hnote{color:var(--sp-tan)!important}
+
+/* v6: ruang kiri-kanan, testimoni ke tengah, deskripsi 2 baris */
+.sp-head p{max-width:52ch;font-size:.95rem}
+#testimoni::before{content:"";position:absolute;right:7%;top:64px;width:84px;height:58px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 56' fill='none' stroke='%238D6350' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 40s-12-7.500-12-17a7 7 0 0112-4.500A7 7 0 0134 23c0 9.500-12 17-12 17z' transform='rotate(-12 22 30)'/%3E%3Cpath d='M56 30s-9-5.500-9-12.500a5.200 5.200 0 019-3.300 5.200 5.200 0 019 3.300c0 7-9 12.500-9 12.500z' transform='rotate(10 56 20)'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.55;pointer-events:none;z-index:0}
+#testimoni .tts{max-width:820px;margin-inline:auto}
+#testimoni .sp-head,#testimoni .row{max-width:820px;margin-inline:auto}
+.tt.tc{position:relative}
+.tt.tc::after{content:"\201D";position:absolute;right:18px;top:0;font:700 3.4rem/1 Georgia,serif;color:rgba(141,99,80,.22);pointer-events:none}
