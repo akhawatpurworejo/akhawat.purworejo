@@ -1,5 +1,5 @@
 /* Detail layanan (Ride, Assist, Care, Gift): mobile-first, satu sistem desain. Aktif hanya di body.sp */
-body.sp{--sp-dk:#4a2f24;--sp-dk2:#5f3d2f;--sp-acc:#8d6350;--sp-tan:#e6cdb2;--sp-tint:#f1e2d0;--sp-gap:clamp(36px,7vw,64px);
+body.sp{--sp-dk:#4a2f24;--sp-dk2:#5f3d2f;--sp-acc:#8d6350;--sp-tan:#e6cdb2;--sp-tint:#f1e2d0;--sp-gap:clamp(26px,5vw,40px);
  --pl:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none' stroke='%23F3E3D0' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 26s-8-5-8-11a4.500 4.500 0 018-3 4.500 4.500 0 018 3c0 6-8 11-8 11z'/%3E%3Cpath d='M84 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z'/%3E%3Ccircle cx='64' cy='70' r='1.600'/%3E%3Cpath d='M96 96s-6-4-6-8.500a3.500 3.500 0 016-2.300 3.500 3.500 0 016 2.300c0 4.500-6 8.500-6 8.500z'/%3E%3Cpath d='M30 90l1.500 3.500 3.500 1.500-3.500 1.500-1.500 3.500-1.500-3.500-3.500-1.500 3.500-1.500z'/%3E%3Ccircle cx='100' cy='50' r='1.400'/%3E%3C/svg%3E");
  --pd:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none' stroke='%238D6350' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 26s-8-5-8-11a4.500 4.500 0 018-3 4.500 4.500 0 018 3c0 6-8 11-8 11z'/%3E%3Cpath d='M84 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z'/%3E%3Ccircle cx='64' cy='70' r='1.600'/%3E%3Cpath d='M96 96s-6-4-6-8.500a3.500 3.500 0 016-2.300 3.500 3.500 0 016 2.300c0 4.500-6 8.500-6 8.500z'/%3E%3Cpath d='M30 90l1.500 3.500 3.500 1.500-3.500 1.500-1.500 3.500-1.500-3.500-3.500-1.500 3.500-1.500z'/%3E%3Ccircle cx='100' cy='50' r='1.400'/%3E%3C/svg%3E")}
 body.sp section{padding:var(--sp-gap) 0;position:relative}
@@ -12,10 +12,10 @@ body.sp .btn.solid{display:inline-flex;align-items:center;justify-content:center
 .sp-card svg,.sp-why svg,.sp-ic svg,.sp-pill svg,.sp-orn{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sp-head{text-align:center;margin-bottom:26px}.sp-head p{margin:10px auto 0;max-width:42ch;font-size:1rem}
 .sp-hero::before,.sp-dark::before,.sp-box::before{content:"";position:absolute;inset:0;background:var(--pl);opacity:.13;pointer-events:none}
-.sp-white::before,.sp-jenis::before{content:"";position:absolute;inset:0;background:var(--pd);opacity:.09;pointer-events:none}
+.sp-white::before{content:"";position:absolute;inset:0;background:var(--pd);opacity:.09;pointer-events:none}
 
 /* A. Hero (cokelat tua) */
-.sp-hero{padding:20px 0 0;border-radius:0;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
+.sp-hero{padding:20px 0 26px;border-radius:0 0 44px 44px;background:radial-gradient(110% 55% at 85% 20%,rgba(255,255,255,.08),transparent 60%),linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));overflow:hidden;color:#fbf3e9}
 .sp-hero-in{display:grid;gap:10px}
 .sp-hero .crumb{display:block;width:fit-content;margin-bottom:18px;color:var(--sp-tan)}
 .sp-pill{display:flex;width:fit-content;align-items:center;gap:8px;background:rgba(255,255,255,.13);color:#f6e7d3;border-radius:999px;padding:7px 16px 7px 10px;font:600 1rem 'Cormorant Garamond',Georgia,serif;margin-bottom:14px}
@@ -47,7 +47,7 @@ body.sp .sp-hero .btn.solid{background:#f6e7d3;background-image:none;color:var(-
 @media(min-width:900px){.sp-cards{grid-template-columns:repeat(4,1fr);gap:18px}.sp-card{padding:30px 18px 26px}}
 
 /* C. Keunggulan (putih) */
-.sp-white{background:#fff}
+.sp-white{background:#fff;margin:var(--blk) 12px;border-radius:32px;overflow:hidden;padding-top:var(--sp-gap)}@media(min-width:1000px){.sp-white{max-width:1180px;margin-inline:auto}}
 .sp-whyband .sp-head{margin-bottom:22px}
 .sp-why{display:grid;grid-template-columns:1fr 1fr;gap:26px 0}
 .sp-why>div{display:grid;justify-items:center;text-align:center;gap:8px;padding:0 12px}
@@ -59,7 +59,7 @@ body.sp .sp-hero .btn.solid{background:#f6e7d3;background-image:none;color:var(-
 @media(min-width:900px){.sp-why{grid-template-columns:repeat(4,1fr)}.sp-why>div{border-left:1px solid rgba(141,99,80,.25)}.sp-why>div:first-child{border-left:0}}
 
 /* D. Cara pemesanan (panel cokelat tua) */
-.sp-dark{background:linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));color:#fbf3e9;margin:var(--sp-gap) 12px;border-radius:34px;padding:44px 0}
+.sp-dark{background:linear-gradient(180deg,var(--sp-dk2),var(--sp-dk));color:#fbf3e9;margin:var(--blk) 12px;border-radius:34px;padding:40px 0}
 .sp-dark h2{color:#fff8ef}.sp-dark h2::before,.sp-dark h2::after{background:rgba(230,205,178,.5)}
 .sp-dark .sp-head p{color:rgba(251,243,233,.8)}
 .sp-steps{list-style:none;padding:0;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px 14px;max-width:1000px}
@@ -69,7 +69,7 @@ body.sp .sp-hero .btn.solid{background:#f6e7d3;background-image:none;color:var(-
 .sp-ic i{position:absolute;top:-4px;left:-2px;width:26px;height:26px;border-radius:50%;background:#f6e7d3;color:var(--sp-dk);font:700 .8rem/26px Quicksand,sans-serif;text-align:center;font-style:normal}
 .sp-steps b{font-weight:600;color:#fbf3e9;line-height:1.4;font-size:1rem}
 @media(min-width:900px){
- .sp-dark{margin:var(--sp-gap) auto;max-width:1180px;padding:56px 0}
+ .sp-dark{margin:var(--blk) auto;max-width:1180px;padding:48px 0}
  .sp-steps{grid-template-columns:repeat(4,1fr);gap:20px}
  .sp-steps li:not(:last-child)::after{content:"›";position:absolute;right:-14px;top:22px;font:400 2rem/1 Georgia,serif;color:var(--sp-tan)}
 }
@@ -118,7 +118,7 @@ body.sp .kfm h2::before,body.sp .kfm h2::after,body.sp .tform h2::before,body.sp
 .tt.tc blockquote{font:400 1rem/1.55 Quicksand,'DM Sans',sans-serif;font-style:normal;margin:0}
 
 /* Beranda */
-.sp-hero.curve{border-radius:0 0 44px 44px}
+
 .sp-hero h1 em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;color:var(--sp-tan);text-decoration:underline;text-decoration-color:rgba(230,205,178,.55);text-decoration-thickness:2px;text-underline-offset:10px}
 body.sp .sp-hero .btn:not(.solid){background:transparent;border-color:#e6cdb2;color:#fbf3e9;box-shadow:none}
 .sp-hero .row{display:flex;gap:12px;flex-wrap:wrap}
@@ -136,3 +136,13 @@ body.sp .sp-hero .btn:not(.solid){background:transparent;border-color:#e6cdb2;co
 .sp-hero .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px}
 body.sp .sp-box h2{display:block;text-align:inherit}
 body.sp .sp-box h2::before,body.sp .sp-box h2::after{content:none}
+
+.sp-art img{mix-blend-mode:multiply}
+.hnote{color:#6b4a3a}
+@media(min-width:1180px){.hnote{color:var(--sp-tan)}}
+body.sp .sp-hero+section{padding-top:calc(var(--sp-gap) + var(--ovl))}
+body.sp .sp-white,body.sp .sp-dark{margin-top:var(--blk)}
+
+.sp-white::after,.sp-dark::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/100px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/100px no-repeat;opacity:.4}
+.sp-dark::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23E6CDB2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") right -8px top -6px/100px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23E6CDB2' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 95C30 70 50 45 85 12'/%3E%3Cpath d='M28 74c-10-2-14-10-12-18 9 1 14 8 12 18zM44 56c-9-4-11-13-7-20 9 3 11 11 7 20zM62 38c-8-5-8-14-2-20 8 4 9 12 2 20zM36 66c8-1 15 3 18 10-9 3-16-1-18-10zM54 48c8-1 14 3 17 9-9 3-15 0-17-9z'/%3E%3C/svg%3E") left -8px bottom -6px/100px no-repeat;opacity:.35}
+body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
