@@ -48,3 +48,11 @@ footer{border-radius:36px 36px 0 0;margin-top:var(--blk)}
 .alt>.wrap{padding-left:34px;padding-right:34px}
 .alt{margin-left:16px;margin-right:16px}
 header .wrap{padding-left:22px;padding-right:22px}
+
+/* Tentang: kartu nilai berikon + kutipan timbul */
+.vals>.vcard{border-left:0;padding:26px 20px;background:#fff;border:1px solid #ecd9c6;border-radius:24px;box-shadow:0 10px 24px rgba(79,50,38,.10);text-align:center;display:grid;justify-items:center;align-content:start;gap:8px}
+.vic{width:64px;height:64px;border-radius:50%;background:#f1e2d0;color:#6b4a3a;display:grid;place-items:center}
+.vic svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.vcard h3{font-size:1.2rem;margin:4px 0 0}.vcard p{margin:0}
+.alt.quote{box-shadow:0 18px 36px rgba(79,50,38,.22),0 3px 0 rgba(255,255,255,.7) inset;border:1px solid #e7cfb6}
+.alt.quote{margin-bottom:28px}
