@@ -209,3 +209,14 @@ body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
 .vrow .vpill{margin:0 auto 6px!important}
 .vtext{margin-left:auto;margin-right:auto}
 .cimg{object-fit:contain}
+
+/* v11 Visi & Misi: judul seragam, deskripsi 2 baris, jarak rapat */
+body.vm{--sp-gap:clamp(16px,3vw,24px);--sec:clamp(16px,3vw,24px)}
+.hd::before{content:"";display:block;width:150px;height:17px;margin:0 auto 6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 18' fill='none' stroke='%238D6350' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 10C22 2 38 18 62 10M98 10c24 8 40-8 60 0'/%3E%3Cpath d='M80 15s-6-3.500-6-7.500a3.200 3.200 0 016-2 3.200 3.200 0 016 2c0 4-6 7.500-6 7.500z'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.6}
+.nodiv::after{content:none!important}
+.vm .sp-head{margin-bottom:16px}
+.vm .vrow{gap:2px}
+.vm .vrow .sp-head{margin-bottom:10px}
+.vtext{max-width:64ch!important;font-size:clamp(1.1rem,3.6vw,1.5rem)!important}
+.vm .alt{padding-bottom:var(--sp-gap)}
+.vm .sp-cta{margin-top:0}
