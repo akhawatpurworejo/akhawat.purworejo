@@ -182,3 +182,24 @@ body.sp .sp-white+.sp-dark{margin-top:calc(var(--blk) + 6px)}
 @media(min-width:700px){.misi{grid-template-columns:1fr 1fr}}
 .misi li{counter-increment:m;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;background:#fff;border:1px solid #ecd9c6;border-radius:22px;padding:18px 20px;box-shadow:0 8px 20px rgba(79,50,38,.09);color:var(--cream);font-weight:600;line-height:1.45;margin:0}
 .misi li::before{content:counter(m);position:static;width:52px;height:52px;border-radius:50%;background:#f1e2d0;color:#6b4a3a;display:grid;place-items:center;font:600 1.3rem 'Playfair Display',Georgia,serif;left:auto;top:auto;transform:none}
+
+/* v9 Visi & Misi mengikuti referensi, ikon berbingkai bulat */
+.sp-hero .sp-ital{margin-top:14px}
+.vrow{display:grid;justify-items:center;text-align:center;gap:14px;max-width:900px;margin:0 auto}
+.vrow .vdiv{display:none}
+.vrow .vpill{margin:0 auto 6px;background:rgba(141,99,80,.14);color:var(--sp-acc)}
+.vic.big{position:relative;width:96px;height:96px;background:var(--sp-tint);border-radius:50%;display:grid;place-items:center;color:#6b4a3a}
+.vic.big svg{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.vic.big::after{content:"\2726";position:absolute;right:-8px;top:-6px;color:var(--sp-acc);font-size:1.3rem}
+.vtext{font:500 clamp(1.3rem,4.6vw,1.75rem)/1.45 'Cormorant Garamond',Georgia,serif;font-style:normal;max-width:36ch}
+@media(min-width:760px){
+ .vrow{grid-template-columns:auto 1px 1fr;text-align:left;justify-items:start;align-items:center;gap:36px}
+ .vrow .vdiv{display:block;width:1px;height:110px;background:rgba(141,99,80,.4)}
+ .vrow .vpill{margin:0 0 10px}
+}
+.misi li{grid-template-columns:60px 1fr;gap:20px;padding:20px 22px;font-weight:500;background:linear-gradient(rgba(141,99,80,.35),rgba(141,99,80,.35)) 92px 50%/1px 56% no-repeat,#fff}
+.misi li::before{content:"";width:60px;height:60px;background:#f1e2d0 center/28px no-repeat;font-size:0}
+.misi li:nth-child(4n+1)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B4A3A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d=%22M12 20s-7-4.500-7-10a4 4 0 017-2.500A4 4 0 0119 10c0 5.500-7 10-7 10z%22/%3E%3C/svg%3E")}
+.misi li:nth-child(4n+2)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B4A3A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d=%22M5 6a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-6l-4 4v-4a2 2 0 01-2-2z%22/%3E%3Cpath d=%22M9 10h.01M12 10h.01M15 10h.01%22/%3E%3C/svg%3E")}
+.misi li:nth-child(4n+3)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B4A3A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d=%22M12 3l7 3v5c0 4.500-3 8-7 10-4-2-7-5.500-7-10V6z%22/%3E%3Cpath d=%22M8.500 12l2.500 2.500 4.500-5%22/%3E%3C/svg%3E")}
+.misi li:nth-child(4n+4)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B4A3A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx=%229%22 cy=%228%22 r=%223%22/%3E%3Cpath d=%22M3 20a6 6 0 0112 0%22/%3E%3Ccircle cx=%2217%22 cy=%229%22 r=%222.500%22/%3E%3Cpath d=%22M16 14a5 5 0 015 6%22/%3E%3C/svg%3E")}
